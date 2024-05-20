@@ -5,8 +5,9 @@ import { useStateContext } from "./context/ContextProvider";
 
 import "./App.css";
 import Sidebar from "./components/Sidebar";
-import Dashboard from "./pages/Dashboard";
 import Navbar from "./components/Navbar";
+import Dashboard from "./pages/Dashboard";
+import Consultation from "./pages/Consultation";
 
 const App = () => {
   const { activeMenu } = useStateContext();
@@ -37,6 +38,7 @@ const App = () => {
                 <Routes>
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/consultation" element={<Consultation />} />
                 </Routes>
               </div>
             </div>
