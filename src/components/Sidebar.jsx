@@ -23,6 +23,7 @@ const Sidebar = () => {
         category.links.forEach(link => {
           if (link.url === pathname) {
             setActiveParentMenu(link.url);
+            setActiveNavLink(link.url);
           }
         });
       });
@@ -31,9 +32,15 @@ const Sidebar = () => {
   );
 
   const handleCloseSideBar = () => {
-    if (activeMenu !== undefined && screenSize <= 1300) {
+    if (activeMenu !== undefined && screenSize <= 1000) {
       setActiveMenu(false);
     }
+  };
+
+  const handleLinkClick = linkUrl => {
+    setActiveNavLink(linkUrl);
+    setActiveParentMenu(linkUrl);
+    handleCloseSideBar();
   };
 
   const activeLink =
@@ -72,11 +79,7 @@ const Sidebar = () => {
               <NavLink
                 to={link.url}
                 key={link.name}
-                onClick={() => {
-                  handleCloseSideBar();
-                  setActiveNavLink(link.url);
-                  setActiveParentMenu(link.url);
-                }}
+                onClick={() => handleLinkClick(link.url)}
                 style={({ isActive }) => ({
                   backgroundColor: isActive ? currentColor : ""
                 })}

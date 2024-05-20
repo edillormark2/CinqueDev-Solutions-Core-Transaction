@@ -7,6 +7,24 @@ export const ContextProvider = ({ children }) => {
   const [currentColor, setCurrentColor] = useState("#1A97F5");
   const [screenSize, setScreenSize] = useState(undefined);
 
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(
+    () => {
+      if (screenSize <= 1000) {
+        setActiveMenu(false);
+      }
+    },
+    [screenSize]
+  );
+
   return (
     <StateContext.Provider
       value={{
