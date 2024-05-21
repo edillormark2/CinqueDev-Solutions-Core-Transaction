@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, ModalDialog, Divider, Textarea, Button } from "@mui/joy";
 
-const Reply = (props) => {
+const Message = (props) => {
   const { openModal, setOpenModal, title, email } = props;
 
   return (
@@ -20,4 +20,4 @@ const Reply = (props) => {
   )
 }
 
-export default Reply;
+export default Message;
