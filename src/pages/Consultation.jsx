@@ -4,7 +4,7 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { MdOutlinePersonAdd } from "react-icons/md";
 
 import Assign from "../components/modals/Assign";
-import Reply from "../components/modals/Reply";
+import Reply from "../components/modals/Message";
 import { consultationDummyData } from "../data/consultation";
 
 

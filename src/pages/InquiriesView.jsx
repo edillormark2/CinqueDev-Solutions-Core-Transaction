@@ -1,12 +1,18 @@
-import React from "react";
+import { React, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Divider, Select, Option, Button } from "@mui/joy";
+import { MdOutlineMailOutline } from "react-icons/md";
 import { inquiriesDummyData } from "../data/inquiries";
 import StatusChip from "../components/StatusChip";
 import { teams } from "../data/employee";
+import Message from "../components/modals/Message";
+import { useNavigate } from "react-router-dom";
 
 const InquiriesView = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
+  const [openMessageModal, setOpenMessageModal] = useState(false);
+  const [email, setEmail] = useState("empty");
   const getInquiryById = (id) => {
     return inquiriesDummyData.find(inquiry => inquiry.id === id);
   }
@@ -54,26 +60,39 @@ const InquiriesView = () => {
         </div>
       </div>
 
-      <div className="mt-4 p-4 shadow-md bg-white rounded-lg flex gap-2 items-center">
-        <p><strong>Assigned Team:</strong></p>
-        {
-          inquiry.status === 'New'
-            ? <div className="flex gap-2">
-              <Select placeholder='Choose Team...' className="w-60">
-                {
-                  teams.map((employee, index) => {
-                    return (
-                      <Option key={index} value={employee}>{employee}</Option>
-                    )
-                  })
-                }
-              </Select>
-              <Button className="w-fit">Select</Button>
+      <div className="mt-4 p-4 shadow-md bg-white rounded-lg flex justify-between">
+        <div className="flex items-end gap-2">
+          <p><strong>Assigned Team:</strong></p>
+          {
+            inquiry.status === 'New'
+              ? <div className="flex gap-2">
+                <Select placeholder='Choose Team...' className="w-60">
+                  {
+                    teams.map((employee, index) => {
+                      return (
+                        <Option key={index} value={employee}>{employee}</Option>
+                      )
+                    })
+                  }
+                </Select>
+                <Button className="w-fit">Select</Button>
               </div>
-            : <p>{inquiry.team}</p>
-        }
+              : <p>{inquiry.team}</p>
+          }
+        </div>
+        <Button sx={{ backgroundColor: 'navy' }} onClick={() => navigate(`/inquiries/message/${id}`)}>
+          <MdOutlineMailOutline size={24} />
+        </Button>
       </div>
 
+      <div>
+        <Message
+          title="Reply"
+          email={email}
+          openModal={openMessageModal}
+          setOpenModal={setOpenMessageModal}
+        />
+      </div>
     </div>
   );
 };
