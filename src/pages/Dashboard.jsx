@@ -42,10 +42,12 @@ const dashboardData = [
 
 const Dashboard = () => {
   return (
-    <div className="my-28 md:my-16 mx-10 md:mx-16 ">
+    <div className="my-28 md:my-16">
       <div>
         <div className="flex flex-wrap lg:flex-nowrap justify-center ">
-          <div className="bg-white  h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center">
+       
+          <div className="flex m-3 flex-wrap justify-center gap-2 items-center">
+          <div className="bg-white  h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-2 bg-hero-pattern bg-no-repeat bg-cover bg-center">
             <div className="flex justify-between items-center">
               <div>
                 <p className="font-bold text-gray-400">Consultation</p>
@@ -64,11 +66,10 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="flex m-3 flex-wrap justify-center gap-2 items-center">
             {dashboardData.map(item =>
               <div
                 key={item.title}
-                className="bg-white h-44 dark:text-gray-200  md:w-56  p-4 pt-9 rounded-2xl drop-shadow-sm hover:bg-gradient-to-l from-blue-100 to-white hover:bg-gradient "
+                className="bg-white h-44 dark:text-gray-200  w-56  p-4 pt-9 rounded-2xl drop-shadow-sm hover:bg-gradient-to-l from-blue-100 to-white hover:bg-gradient "
               >
                 <button
                   type="button"
