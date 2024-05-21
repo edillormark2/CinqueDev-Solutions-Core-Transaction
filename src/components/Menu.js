@@ -1,5 +1,7 @@
 import React from "react";
 import { AiOutlineHome } from "react-icons/ai";
+import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
+import { MdOutlineFindReplace } from "react-icons/md";
 
 export const links = [
   {
@@ -18,12 +20,12 @@ export const links = [
       {
         name: "Consultation",
         url: "/consultation",
-        icon: <AiOutlineHome />
+        icon: <IoChatbubbleEllipsesOutline />
       },
       {
         name: "Inquiries",
         url: "/inquiries",
-        icon: <AiOutlineHome />
+        icon: <MdOutlineFindReplace />
       },
       {
         name: "Menu 3",

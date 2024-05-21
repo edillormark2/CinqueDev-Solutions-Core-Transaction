@@ -7,20 +7,18 @@ import { Unstable_Popup as BasePopup } from "@mui/base/Unstable_Popup";
 import profile from "../assets/profile.png";
 
 const NavButton = ({ customFunc, icon, color, dotColor }) =>
-  <Tooltip arrow title="Menu" placement="bottom" TransitionComponent={Fade}>
-    <button
-      type="button"
-      onClick={() => customFunc()}
-      style={{ color }}
-      className="relative text-xl rounded-full p-3 bg-gray-100 hover:bg-gray-200"
-    >
-      <span
-        style={{ background: dotColor }}
-        className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"
-      />
-      {icon}
-    </button>
-  </Tooltip>;
+  <button
+    type="button"
+    onClick={() => customFunc()}
+    style={{ color }}
+    className="relative text-xl rounded-full p-3 bg-gray-100 hover:bg-gray-200"
+  >
+    <span
+      style={{ background: dotColor }}
+      className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"
+    />
+    {icon}
+  </button>;
 
 const Navbar = () => {
   const [menuClicked, setMenuClicked] = useState("");
