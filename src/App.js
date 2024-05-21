@@ -21,7 +21,7 @@ const App = () => {
               ? <div className="w-64 fixed sidebar drop-shadow-xl bg-gray-100">
                   <Sidebar />
                 </div>
-              : <div className="w-0 drop-shadow-xl bg-gray-100">
+              : <div className="sidebar-transition w-0 drop-shadow-xl bg-gray-100">
                   <Sidebar />
                 </div>}
             <div

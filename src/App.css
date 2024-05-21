@@ -47,6 +47,17 @@
   }
 }
 
+.sidebar-transition {
+  @apply duration-300;
+}
+
+/* Media query for mobile screens */
+@media screen and (max-width: 1000px) {
+  .sidebar-transition {
+    transition: none; /* No transition for mobile screens */
+  }
+}
+
 .e-dlg-center-center,
 .e-quick-popup-wrapper.e-device {
   z-index: 1000000 !important; /* Adjust other components as needed */
