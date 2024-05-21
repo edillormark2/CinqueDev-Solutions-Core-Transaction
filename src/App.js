@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import Consultation from "./pages/Consultation";
 import Inquiries from "./pages/Inquiries";
 import InquiriesView from "./pages/InquiriesView";
+import Message from "./pages/Message";
 
 const App = () => {
   const { activeMenu } = useStateContext();
@@ -43,6 +44,7 @@ const App = () => {
                   <Route path="/consultation" element={<Consultation />} />
                   <Route path="/inquiries" element={<Inquiries />} />
                   <Route path="/inquiries/detail/:id" element={<InquiriesView />}/>
+                  <Route path="/inquiries/message/:id" element={<Message />}/>
                 </Routes>
               </div>
             </div>
