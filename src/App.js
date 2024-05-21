@@ -8,6 +8,8 @@ import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
 import Consultation from "./pages/Consultation";
+import Inquiries from "./pages/Inquiries";
+import InquiriesView from "./pages/InquiriesView";
 
 const App = () => {
   const { activeMenu } = useStateContext();
@@ -39,6 +41,8 @@ const App = () => {
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/consultation" element={<Consultation />} />
+                  <Route path="/inquiries" element={<Inquiries />} />
+                  <Route path="/inquiries/detail/:id" element={<InquiriesView />}/>
                 </Routes>
               </div>
             </div>

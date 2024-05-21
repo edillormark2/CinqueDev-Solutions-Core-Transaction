@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, ModalDialog, Divider, Select, Option } from "@mui/joy";
+import { Modal, ModalDialog, Divider, Select, Option, Button } from "@mui/joy";
 import { employees } from "../../data/employee";
 
 const Assign = (props) => {
@@ -19,6 +19,7 @@ const Assign = (props) => {
             })
           }
         </Select>
+        <Button className="w-fit">Assign</Button>
       </ModalDialog>
     </Modal>
   )
