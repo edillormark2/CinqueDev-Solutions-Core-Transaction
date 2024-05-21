@@ -3,10 +3,8 @@ import { Divider, Table, Button } from "@mui/joy"
 import { MdOutlineMailOutline } from "react-icons/md";
 import { MdOutlinePersonAdd } from "react-icons/md";
 
-
 import Assign from "../components/modals/Assign";
 import Reply from "../components/modals/Reply";
-import employee from "../data/employee";
 import { consultationDummyData } from "../data/consultation";
 
 
@@ -23,7 +21,7 @@ const Consultation = () => {
       <Table stripe="odd" variant="plain">
         <thead>
           <tr>
-            <th style={{ width: '10%' }} >Date</th>
+            <th style={{ width: '12%' }} >Date</th>
             <th style={{ width: '20%' }}>Name</th>
             <th style={{ width: '30%' }}>Message</th>
             <th style={{ width: '20%' }}>Assignees</th>
