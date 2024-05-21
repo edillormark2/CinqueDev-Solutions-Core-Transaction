@@ -16,13 +16,13 @@ export const links = [
     title: "Pages",
     links: [
       {
-        name: "Menu 1",
-        url: "/menu1",
+        name: "Consultation",
+        url: "/consultation",
         icon: <AiOutlineHome />
       },
       {
-        name: "Menu 2",
-        url: "/menu2",
+        name: "Inquiries",
+        url: "/inquiries",
         icon: <AiOutlineHome />
       },
       {
