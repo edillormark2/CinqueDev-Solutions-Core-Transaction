@@ -62,3 +62,7 @@
 .e-quick-popup-wrapper.e-device {
   z-index: 1000000 !important; /* Adjust other components as needed */
 }
+
+.bg-hero-pattern {
+  background-image: url("./assets/welcome-bg.svg");
+}

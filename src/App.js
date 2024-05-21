@@ -33,7 +33,7 @@ const App = () => {
                 <Navbar />
               </div>
 
-              <div className="my-28 md:my-8 mx-4 md:mx-16 overflow-x-auto">
+              <div className="my-2 md:my-4 mx-2 overflow-x-auto">
                 <ToastContainer className="toast-container" />
                 <Routes>
                   <Route path="/" element={<Dashboard />} />

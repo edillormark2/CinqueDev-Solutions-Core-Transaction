@@ -1,7 +1,9 @@
 import React from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
-import { MdOutlineFindReplace } from "react-icons/md";
+import { GoStack } from "react-icons/go";
+import { BiSupport } from "react-icons/bi";
+import { RxUpdate } from "react-icons/rx";
 
 export const links = [
   {
@@ -20,22 +22,22 @@ export const links = [
       {
         name: "Consultation",
         url: "/consultation",
-        icon: <IoChatbubbleEllipsesOutline />
+        icon: <BiSupport />
       },
       {
         name: "Inquiries",
         url: "/inquiries",
-        icon: <MdOutlineFindReplace />
+        icon: <IoChatbubbleEllipsesOutline />
       },
       {
-        name: "Menu 3",
-        url: "/menu3",
-        icon: <AiOutlineHome />
+        name: "Contracts",
+        url: "/contracts",
+        icon: <GoStack />
       },
       {
-        name: "Menu 4",
+        name: "Ongoing Support",
         url: "/menu4",
-        icon: <AiOutlineHome />
+        icon: <RxUpdate />
       }
     ]
   }
