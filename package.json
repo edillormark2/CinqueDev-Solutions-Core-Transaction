@@ -9,6 +9,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.1",
     "@mui/base": "^5.0.0-beta.40",
+    "@mui/icons-material": "^5.15.18",
     "@mui/joy": "^5.0.0-beta.36",
     "@mui/material": "^5.15.18",
     "@testing-library/jest-dom": "^5.17.0",

@@ -11,6 +11,8 @@ import Consultation from "./pages/Consultation";
 import Inquiries from "./pages/Inquiries";
 import InquiriesView from "./pages/InquiriesView";
 import Message from "./pages/Message";
+import Contracts from "./pages/Contracts";
+import ContractForm from "./pages/ContractForm";
 
 const App = () => {
   const { activeMenu } = useStateContext();
@@ -42,9 +44,17 @@ const App = () => {
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/consultation" element={<Consultation />} />
+                  <Route path="/contracts" element={<Contracts />} />
+                  <Route
+                    path="/contracts/contract-form/:id"
+                    element={<ContractForm />}
+                  />
                   <Route path="/inquiries" element={<Inquiries />} />
-                  <Route path="/inquiries/detail/:id" element={<InquiriesView />}/>
-                  <Route path="/inquiries/message/:id" element={<Message />}/>
+                  <Route
+                    path="/inquiries/detail/:id"
+                    element={<InquiriesView />}
+                  />
+                  <Route path="/inquiries/message/:id" element={<Message />} />
                 </Routes>
               </div>
             </div>
