@@ -5,6 +5,7 @@ import Fade from "@mui/material/Fade";
 import { useStateContext } from "../context/ContextProvider";
 import { Unstable_Popup as BasePopup } from "@mui/base/Unstable_Popup";
 import profile from "../assets/profile.png";
+import UserProfilePopup from "./UserProfilePopup";
 
 const NavButton = ({ customFunc, icon, color, dotColor }) =>
   <button
@@ -114,6 +115,7 @@ const Navbar = () => {
           offset={4}
           onClose={handleClose}
         >
+          <UserProfilePopup />
           <div className="action-popup" />
         </BasePopup>}
     </div>
