@@ -72,14 +72,11 @@ const ProjectDetails = () => {
   ];
 
   const calculateStartDate = phaseIndex => {
-    const daysToAdd = phaseIndex * 10; // Add 10 days for each phase
+    const daysToAdd = phaseIndex * 10;
     const startDate = project.startdate ? new Date(project.startdate) : null;
 
-    // Check if the project has started
     if (startDate) {
-      // Calculate the start date only if the current phase is active
       if (project.completionrate >= (phaseIndex + 0) * (100 / phases.length)) {
-        // Add days for the current phase
         startDate.setDate(startDate.getDate() + daysToAdd);
         return startDate.toLocaleDateString("en-US", {
           year: "numeric",
@@ -88,11 +85,10 @@ const ProjectDetails = () => {
         });
       }
     } else {
-      // Return "Not Started" if the project has not started yet
       return "Not Started";
     }
 
-    return ""; // Return empty string if phase is inactive
+    return "";
   };
 
   const calculatePhaseStyle = phaseIndex => {
@@ -124,7 +120,14 @@ const ProjectDetails = () => {
           <p className="text-2xl font-semibold">
             {project.projectname}
           </p>
-          <div>
+          <p>
+            Project progress: {project.completionrate}%
+          </p>
+          <p>
+            Status: {project.status}
+          </p>
+          
+          <div className="mt-8">
             <VerticalTimeline lineColor="#E5E8E8">
               {phases.map((phase, index) =>
                 <VerticalTimelineElement
