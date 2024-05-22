@@ -130,11 +130,11 @@ const Contracts = () => {
         </div>
         <Breadcrumbs links={breadcrumbLinks} />
 
-        <div className="flex my-4 gap-14">
+        <div className="flex flex-col md:flex-row my-4 gap-14">
           {tabs.map(tab =>
             <div
               key={tab.name}
-              className={`flex font-semibold text-sm p-4 text-center cursor-pointer ${activeTab ===
+              className={`flex justify-center md:justify-start mx-16 md:mx-0 font-semibold text-sm p-4 text-center cursor-pointer ${activeTab ===
               tab.name
                 ? "border-b-2 border-blue-500 component-transition"
                 : "hover:border-b-2 hover:border-gray-300"}`}
