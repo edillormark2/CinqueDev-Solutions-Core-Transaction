@@ -17,6 +17,7 @@ const Contracts = () => {
 
   const handleViewContract = id => {
     navigate(`/contracts/contract-form/${id}`);
+    window.scrollTo({ top: 0 });
   };
 
   const tabs = [
@@ -223,7 +224,6 @@ const Contracts = () => {
                             {contract.created}
                           </p>
                         </div>
-                        <BsChat size={20} className="self-center" />
                       </div>
                       <Divider />
                       <div className="my-2">
@@ -243,8 +243,8 @@ const Contracts = () => {
                     </div>
                   </div>
                 )
-              : <div className="mx-auto text-gray-500 w-full">
-                  <div className="flex justify-center">
+              : <div className="flex flex-col w-full text-gray-500">
+                  <div className="mx-auto">
                     <ImFileEmpty size={38} />
                   </div>
                   <div className="text-center my-4">No available contracts</div>
