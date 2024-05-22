@@ -7,12 +7,18 @@ import { AiOutlineSignature } from "react-icons/ai";
 import { contractsDummyData } from "../data/contracts.js";
 import { ImFileEmpty } from "react-icons/im";
 import { MdAdd } from "react-icons/md";
-import { IoIosFolderOpen } from "react-icons/io";
 import Breadcrumbs from "../components/Breadcrumbs.jsx";
 import { useNavigate } from "react-router-dom";
+import { FaFile } from "react-icons/fa";
+import {
+  IoIosFolderOpen,
+  IoIosArrowForward,
+  IoIosArrowDown
+} from "react-icons/io";
 
 const Contracts = () => {
   const [activeTab, setActiveTab] = useState("ALL CONTRACTS");
+  const [activeFolders, setActiveFolders] = useState([]);
   const navigate = useNavigate();
 
   const handleViewContract = id => {
@@ -25,26 +31,66 @@ const Contracts = () => {
     window.scrollTo({ top: 0 });
   };
 
+  const toggleFolder = folderName => {
+    if (activeFolders.includes(folderName)) {
+      setActiveFolders(activeFolders.filter(name => name !== folderName));
+    } else {
+      setActiveFolders([...activeFolders, folderName]);
+    }
+  };
+
+  // Organize contracts by category
+  const categories = {
+    Website: [],
+    "Web Application": [],
+    "Desktop Application": [],
+    "Mobile Application": [],
+    Others: []
+  };
+
+  contractsDummyData.forEach(contract => {
+    if (categories[contract.category]) {
+      categories[contract.category].push(contract);
+    } else {
+      categories.Others.push(contract);
+    }
+  });
+
+  const folders = Object.keys(categories).map(category => ({
+    name: category,
+    details: `${categories[category].length} Contracts`,
+    treeItems: categories[category].map(contract => ({
+      id: contract.id,
+      title: contract.title
+    }))
+  }));
+
   const tabs = [
-    { name: "ALL CONTRACTS", count: 15 },
+    { name: "ALL CONTRACTS", count: contractsDummyData.length },
     {
       name: "PENDING",
-      count: 4,
+      count: contractsDummyData.filter(
+        contract => contract.status === "Pending"
+      ).length,
       icon: <GoDotFill className="text-yellow-500 self-center mr-2" />
     },
     {
       name: "SIGNED",
-      count: 9,
+      count: contractsDummyData.filter(contract => contract.status === "Signed")
+        .length,
       icon: <GoDotFill className="text-green-500 self-center mr-2" />
     },
     {
       name: "REQUEST CHANGES",
-      count: 2,
+      count: contractsDummyData.filter(
+        contract => contract.status === "Request Changes"
+      ).length,
       icon: <GoDotFill className="text-red-500 self-center mr-2" />
     },
     {
       name: "DRAFTS",
-      count: 0,
+      count: contractsDummyData.filter(contract => contract.status === "Drafts")
+        .length,
       icon: <GoDotFill className="text-gray-500 self-center mr-2" />
     }
   ];
@@ -102,93 +148,64 @@ const Contracts = () => {
 
         <div className="mt-10">
           <p className="font-semibold text-gray-500">Folders</p>
-          <div className="w-full flex flex-wrap mt-6 ">
-            <div className="w-full sm:w-full md:w-1/2 2xl:w-1/3 px-0 md:px-2 py-2">
-              <div className="bg-white border border-gray-300 rounded-md p-4 shadow-sm cursor-pointer hover:bg-blue-50">
-                <div className="flex gap-4">
-                  <IoIosFolderOpen
-                    size={40}
-                    className="self-center text-blue-400"
-                  />
-                  <div>
-                    <p className="font-semibold text-lg">Websites</p>
-                    <p className="text-gray-400">
-                      4 Contracts | Created 08 Oct 2023{" "}
-                    </p>
+          <div className="w-full flex flex-wrap mt-6">
+            {folders.map(folder =>
+              <div
+                key={folder.name}
+                className="w-full sm:w-full md:w-1/2 2xl:w-1/3 px-0 md:px-2 py-2"
+              >
+                <div
+                  className="bg-white border border-gray-300 rounded-md p-4 shadow-sm cursor-pointer hover:bg-blue-50"
+                  onClick={() => toggleFolder(folder.name)}
+                >
+                  <div className="flex justify-between">
+                    <div className="flex gap-4">
+                      <IoIosFolderOpen
+                        size={40}
+                        className="self-center text-blue-400"
+                      />
+                      <div>
+                        <p className="font-semibold text-lg">
+                          {folder.name}
+                        </p>
+                        <p className="text-gray-400">
+                          {folder.details}
+                        </p>
+                      </div>
+                    </div>
+                    {activeFolders.includes(folder.name)
+                      ? <IoIosArrowDown
+                          size={20}
+                          className="self-center text-gray-500"
+                        />
+                      : <IoIosArrowForward
+                          size={20}
+                          className="self-center text-gray-500"
+                        />}
+                  </div>
+                </div>
+                <div
+                  className={`transition-all overflow-hidden ${activeFolders.includes(
+                    folder.name
+                  )
+                    ? "max-h-96"
+                    : "max-h-0"} duration-300 ease-in-out`}
+                >
+                  <div className="ml-10 mt-2 text-gray-600">
+                    {folder.treeItems.map(item =>
+                      <div
+                        key={item.id}
+                        className="flex gap-2 py-1 cursor-pointer hover:bg-white px-2 rounded-md"
+                        onClick={() => handleViewContract(item.id)}
+                      >
+                        <FaFile className="self-center text-gray-400" />
+                        {item.title}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div className="w-full sm:w-full md:w-1/2 2xl:w-1/3 px-0 md:px-2 py-2">
-              <div className="bg-white border border-gray-300 rounded-md p-4 shadow-sm cursor-pointer hover:bg-blue-50">
-                <div className="flex gap-4">
-                  <IoIosFolderOpen
-                    size={40}
-                    className="self-center text-blue-400"
-                  />
-                  <div>
-                    <p className="font-semibold text-lg">Web Applications</p>
-                    <p className="text-gray-400">
-                      2 Contracts | Created 08 Oct 2023
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="w-full sm:w-full md:w-1/2 2xl:w-1/3 px-0 md:px-2 py-2">
-              <div className="bg-white border border-gray-300 rounded-md p-4 shadow-sm cursor-pointer hover:bg-blue-50">
-                <div className="flex gap-4">
-                  <IoIosFolderOpen
-                    size={40}
-                    className="self-center text-blue-400"
-                  />
-                  <div>
-                    <p className="font-semibold text-lg">
-                      Desktop Applications
-                    </p>
-                    <p className="text-gray-400">
-                      3 Contracts | Created 08 Oct 2023
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="w-full sm:w-full md:w-1/2 2xl:w-1/3 px-0 md:px-2 py-2">
-              <div className="bg-white border border-gray-300 rounded-md p-4 shadow-sm cursor-pointer hover:bg-blue-50">
-                <div className="flex gap-4">
-                  <IoIosFolderOpen
-                    size={40}
-                    className="self-center text-blue-400"
-                  />
-                  <div>
-                    <p className="font-semibold text-lg">Mobile Applications</p>
-                    <p className="text-gray-400">
-                      2 Contracts | Created 08 Oct 2023{" "}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="w-full sm:w-full md:w-1/2 2xl:w-1/3 px-0 md:px-2 py-2">
-              <div className="bg-white border border-gray-300 rounded-md p-4 shadow-sm cursor-pointer hover:bg-blue-50">
-                <div className="flex gap-4">
-                  <IoIosFolderOpen
-                    size={40}
-                    className="self-center text-blue-400"
-                  />
-                  <div>
-                    <p className="font-semibold text-lg">Others</p>
-                    <p className="text-gray-400">
-                      4 Contracts | Created 08 Oct 2023{" "}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            )}
           </div>
         </div>
 

@@ -19,7 +19,8 @@ export const contractsDummyData = [
     miscellaneous:
       "Any amendments to this Agreement must be made in writing and signed by both parties. This Agreement constitutes the entire agreement between the parties and supersedes all prior agreements and understandings.",
     governingLaw:
-      "This Agreement shall be governed by and construed in accordance with the laws of the State of California."
+      "This Agreement shall be governed by and construed in accordance with the laws of the State of California.",
+    category: "Web Application"
   },
 
   {
@@ -42,7 +43,8 @@ export const contractsDummyData = [
     miscellaneous:
       "Changes to this agreement must be made in writing and signed by both parties. This document represents the entire agreement.",
     governingLaw:
-      "This agreement is governed by the laws of the State of New York."
+      "This agreement is governed by the laws of the State of New York.",
+    category: "Web Application"
   },
   {
     id: 3,
@@ -64,7 +66,8 @@ export const contractsDummyData = [
     miscellaneous:
       "Amendments to this agreement must be in writing and signed by both parties.",
     governingLaw:
-      "This agreement is governed by the laws of the State of California."
+      "This agreement is governed by the laws of the State of California.",
+    category: "Website"
   },
   {
     id: 4,
@@ -86,7 +89,8 @@ export const contractsDummyData = [
     miscellaneous:
       "Any changes to the agreement must be made in writing and signed by both parties.",
     governingLaw:
-      "This agreement will be governed by the laws of the State of Texas."
+      "This agreement will be governed by the laws of the State of Texas.",
+    category: "Website"
   },
   {
     id: 5,
@@ -108,7 +112,8 @@ export const contractsDummyData = [
     miscellaneous:
       "Modifications to the agreement must be in writing and signed by both parties.",
     governingLaw:
-      "This agreement is governed by the laws of the State of Florida."
+      "This agreement is governed by the laws of the State of Florida.",
+    category: "Website"
   },
   {
     id: 6,
@@ -129,7 +134,8 @@ export const contractsDummyData = [
     miscellaneous:
       "Amendments to this agreement must be in writing and signed by both parties.",
     governingLaw:
-      "This agreement is governed by the laws of the State of Washington."
+      "This agreement is governed by the laws of the State of Washington.",
+    category: "Other"
   },
   {
     id: 7,
@@ -151,7 +157,8 @@ export const contractsDummyData = [
     miscellaneous:
       "Any changes must be documented in writing and signed by both parties.",
     governingLaw:
-      "This agreement is governed by the laws of the State of Illinois."
+      "This agreement is governed by the laws of the State of Illinois.",
+    category: "Other"
   },
   {
     id: 8,
@@ -172,7 +179,8 @@ export const contractsDummyData = [
     miscellaneous:
       "Modifications must be in writing and signed by both parties.",
     governingLaw:
-      "This agreement is governed by the laws of the State of California."
+      "This agreement is governed by the laws of the State of California.",
+    category: "Mobile Application"
   },
   {
     id: 9,
@@ -192,7 +200,8 @@ export const contractsDummyData = [
       "Effective from 1 December 2023 until project completion, estimated by 20 December 2023.",
     miscellaneous: "Changes must be in writing and signed by both parties.",
     governingLaw:
-      "This agreement is governed by the laws of the State of New York."
+      "This agreement is governed by the laws of the State of New York.",
+    category: "Website"
   },
   {
     id: 10,
@@ -214,7 +223,8 @@ export const contractsDummyData = [
     miscellaneous:
       "Modifications must be documented in writing and signed by both parties.",
     governingLaw:
-      "This agreement is governed by the laws of the State of Oregon."
+      "This agreement is governed by the laws of the State of Oregon.",
+    category: "Other"
   },
   {
     id: 11,
@@ -235,7 +245,8 @@ export const contractsDummyData = [
       "Effective from 1 February 2024 until project completion, estimated by 30 April 2024.",
     miscellaneous: "Any changes must be in writing and signed by both parties.",
     governingLaw:
-      "This agreement is governed by the laws of the State of Texas."
+      "This agreement is governed by the laws of the State of Texas.",
+    category: "Desktop Application"
   },
   {
     id: 12,
@@ -257,7 +268,8 @@ export const contractsDummyData = [
     miscellaneous:
       "Amendments must be made in writing and signed by both parties.",
     governingLaw:
-      "This agreement is governed by the laws of the State of New Jersey."
+      "This agreement is governed by the laws of the State of New Jersey.",
+    category: "Other"
   },
   {
     id: 13,
@@ -278,7 +290,8 @@ export const contractsDummyData = [
       "The agreement will commence upon signing and end upon project completion, estimated by 1 September 2024.",
     miscellaneous: "Any changes must be in writing and signed by both parties.",
     governingLaw:
-      "This agreement is governed by the laws of the State of Colorado."
+      "This agreement is governed by the laws of the State of Colorado.",
+    category: "Desktop Application"
   },
   {
     id: 14,
@@ -299,7 +312,8 @@ export const contractsDummyData = [
     miscellaneous:
       "Any amendments must be in writing and signed by both parties.",
     governingLaw:
-      "This agreement is governed by the laws of the State of Georgia."
+      "This agreement is governed by the laws of the State of Georgia.",
+    category: "Web Application"
   },
   {
     id: 15,
@@ -320,6 +334,7 @@ export const contractsDummyData = [
     miscellaneous:
       "Modifications must be in writing and signed by both parties.",
     governingLaw:
-      "This agreement is governed by the laws of the State of Nevada."
+      "This agreement is governed by the laws of the State of Nevada.",
+    category: "Mobile Application"
   }
 ];
