@@ -20,9 +20,9 @@ export const links = [
     title: "Pages",
     links: [
       {
-        name: "Consultation",
-        url: "/consultation",
-        icon: <BiSupport />
+        name: "Product",
+        url: "/product",
+        icon: <GoStack />
       },
       {
         name: "Inquiries",
@@ -33,6 +33,11 @@ export const links = [
         name: "Contracts",
         url: "/contracts",
         icon: <GoStack />
+      },
+      {
+        name: "Consultation",
+        url: "/consultation",
+        icon: <BiSupport />
       },
       {
         name: "Ongoing Support",

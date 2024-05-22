@@ -10,6 +10,8 @@ import Dashboard from "./pages/Dashboard";
 import Consultation from "./pages/Consultation";
 import Inquiries from "./pages/Inquiries";
 import InquiriesView from "./pages/InquiriesView";
+import Product from "./pages/Product";
+import ProductView from "./pages/ProductView";
 import Message from "./pages/Message";
 import Contracts from "./pages/Contracts";
 import ContractForm from "./pages/ContractForm";
@@ -60,6 +62,8 @@ const App = () => {
                     element={<InquiriesView />}
                   />
                   <Route path="/inquiries/message/:id" element={<Message />} />
+                  <Route path="/product" element={<Product />} />
+                  <Route path="/product/detail/:id" element={<ProductView />} />
                 </Routes>
               </div>
             </div>
