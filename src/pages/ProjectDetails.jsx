@@ -71,6 +71,30 @@ const ProjectDetails = () => {
     }
   ];
 
+  const calculateStartDate = phaseIndex => {
+    const daysToAdd = phaseIndex * 10; // Add 10 days for each phase
+    const startDate = project.startdate ? new Date(project.startdate) : null;
+
+    // Check if the project has started
+    if (startDate) {
+      // Calculate the start date only if the current phase is active
+      if (project.completionrate >= (phaseIndex + 0) * (100 / phases.length)) {
+        // Add days for the current phase
+        startDate.setDate(startDate.getDate() + daysToAdd);
+        return startDate.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric"
+        });
+      }
+    } else {
+      // Return "Not Started" if the project has not started yet
+      return "Not Started";
+    }
+
+    return ""; // Return empty string if phase is inactive
+  };
+
   const calculatePhaseStyle = phaseIndex => {
     const completionRatePerPhase = 100 / phases.length;
     const completionRateThreshold = phaseIndex * completionRatePerPhase;
@@ -107,7 +131,12 @@ const ProjectDetails = () => {
                   key={phase.id}
                   id={phase.id}
                   className="vertical-timeline-element--work"
-                  date={index === 0 ? "Start" : ""}
+                  date={
+                    project.completionrate >=
+                    (index + 0) * (100 / phases.length)
+                      ? calculateStartDate(index)
+                      : ""
+                  }
                   iconStyle={calculatePhaseStyle(index)}
                   icon={phase.icon}
                 >
