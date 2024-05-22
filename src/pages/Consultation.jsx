@@ -1,12 +1,11 @@
 import { React, useState } from "react";
-import { Divider, Table, Button } from "@mui/joy"
+import { Divider, Table, Button } from "@mui/joy";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { MdOutlinePersonAdd } from "react-icons/md";
 
 import Assign from "../components/modals/Assign";
 import Reply from "../components/modals/Message";
 import { consultationDummyData } from "../data/consultation";
-
 
 const Consultation = () => {
   const [openAssignModal, setOpenAssignModal] = useState(false);
@@ -21,43 +20,69 @@ const Consultation = () => {
       <Table stripe="odd" variant="plain">
         <thead>
           <tr>
-            <th style={{ width: '12%' }} >Date</th>
-            <th style={{ width: '20%' }}>Name</th>
-            <th style={{ width: '30%' }}>Message</th>
-            <th style={{ width: '20%' }}>Assignees</th>
-            <th style={{ width: '20%', textAlign: 'center' }}>Action</th>
+            <th style={{ width: "12%" }}>Date</th>
+            <th style={{ width: "20%" }}>Name</th>
+            <th style={{ width: "30%" }}>Message</th>
+            <th style={{ width: "20%" }}>Assignees</th>
+            <th style={{ width: "20%", textAlign: "center" }}>Action</th>
           </tr>
         </thead>
         <tbody>
-          {
-            consultationDummyData.map((data, index) => {
-              return (
-                <tr key={index}>
-                  <td className="h-auto content-start">
-                    <p className="font-semibold">{data.date}</p>
-                    <p className=" text-gray-500">{data.time}</p>
-                  </td>
-                  <td className="h-auto content-start">
-                    <p className="font-semibold">{data.name}</p>
-                    <p className=" text-gray-500">{data.email}</p>
-                    <p className=" text-gray-500">{data.phone}</p>
-                  </td>
-                  <td>{data.message}</td>
-                  <td className="font-semibold hover:cursor-pointer" onClick={() => setOpenAssignModal(true)}>
-                    <p>{data.assignees}</p>
-                  </td>
-                  <td>
-                    <div className="flex gap-2 justify-center">
-                      <Button sx={{ backgroundColor: 'navy' }} onClick={() => setOpenAssignModal(true)}><MdOutlinePersonAdd size={24} /></Button>
-                      <Button sx={{ backgroundColor: 'navy' }} onClick={() => {setOpenReplyModal(true);setEmail(data.email)}}>
-                        <MdOutlineMailOutline size={24} />
-                      </Button>
-                    </div>
-                  </td>
-                </tr>
-              )
-            })
-          }
+          {consultationDummyData.map((data, index) => {
+            return (
+              <tr key={index} >
+                <td className="h-auto content-start">
+                  <p className="font-semibold">
+                    {data.date}
+                  </p>
+                  <p className=" text-gray-500">
+                    {data.time}
+                  </p>
+                </td>
+                <td className="h-auto content-start">
+                  <p className="font-semibold">
+                    {data.name}
+                  </p>
+                  <p className=" text-gray-500">
+                    {data.email}
+                  </p>
+                  <p className=" text-gray-500">
+                    {data.phone}
+                  </p>
+                </td>
+                <td>
+                  {data.message}
+                </td>
+                <td
+                  className="font-semibold hover:cursor-pointer"
+                  onClick={() => setOpenAssignModal(true)}
+                >
+                  <p>
+                    {data.assignees}
+                  </p>
+                </td>
+                <td>
+                  <div className="flex gap-2 justify-center">
+                    <Button
+                      sx={{ backgroundColor: "navy" }}
+                      onClick={() => setOpenAssignModal(true)}
+                    >
+                      <MdOutlinePersonAdd size={24} />
+                    </Button>
+                    <Button
+                      sx={{ backgroundColor: "navy" }}
+                      onClick={() => {
+                        setOpenReplyModal(true);
+                        setEmail(data.email);
+                      }}
+                    >
+                      <MdOutlineMailOutline size={24} />
+                    </Button>
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
 

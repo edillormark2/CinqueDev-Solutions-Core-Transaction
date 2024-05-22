@@ -4,6 +4,8 @@ import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import { GoStack } from "react-icons/go";
 import { BiSupport } from "react-icons/bi";
 import { RxUpdate } from "react-icons/rx";
+import { MdOutlineShoppingCart } from "react-icons/md";
+import { IoHandLeftOutline } from "react-icons/io5";
 
 export const links = [
   {
@@ -20,9 +22,9 @@ export const links = [
     title: "Pages",
     links: [
       {
-        name: "Product",
-        url: "/product",
-        icon: <GoStack />
+        name: "Consultation",
+        url: "/consultation",
+        icon: <BiSupport />
       },
       {
         name: "Inquiries",
@@ -35,10 +37,16 @@ export const links = [
         icon: <GoStack />
       },
       {
-        name: "Consultation",
-        url: "/consultation",
-        icon: <BiSupport />
+        name: "Projects",
+        url: "/projects",
+        icon: <IoHandLeftOutline />
       },
+      {
+        name: "Product",
+        url: "/product",
+        icon: <MdOutlineShoppingCart />
+      },
+
       {
         name: "Ongoing Support",
         url: "/menu4",
