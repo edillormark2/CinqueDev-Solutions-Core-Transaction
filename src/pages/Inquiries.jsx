@@ -32,7 +32,7 @@ const Inquiries = () => {
           {
             inquiriesDummyData.map((data, index) => {
               return (
-                <tr key={index} className="hover:cursor-pointer hover:bg-blue-200" onClick={()=>handleViewDetail(data.id)}>
+                <tr key={index} className="hover:cursor-pointer hover:bg-blue-50" onClick={()=>handleViewDetail(data.id)}>
                   <td className="h-auto content-start">
                     <p className="font-semibold">{data.name}</p>
                     <p className="text-gray-500 overflow-hidden text-ellipsis">{data.email}</p>
