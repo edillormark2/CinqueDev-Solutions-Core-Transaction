@@ -20,6 +20,11 @@ const Contracts = () => {
     window.scrollTo({ top: 0 });
   };
 
+  const handleCreateContract = () => {
+    navigate(`/contracts/create-new-contract`);
+    window.scrollTo({ top: 0 });
+  };
+
   const tabs = [
     { name: "ALL CONTRACTS", count: 15 },
     {
@@ -70,7 +75,10 @@ const Contracts = () => {
       <div>
         <div className="flex flex-col md:flex-row justify-between">
           <div className="text-3xl font-semibold my-4">Contracts</div>
-          <div className="bg-primary text-white rounded-md py-2 px-4 my-4 flex justify-center gap-4 cursor-pointer hover:opacity-75">
+          <div
+            onClick={() => handleCreateContract()}
+            className="bg-primary text-white rounded-md py-2 px-4 my-4 flex justify-center gap-4 cursor-pointer hover:opacity-75"
+          >
             Add New Contract <MdAdd size={22} className="self-center" />
           </div>
         </div>

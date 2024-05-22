@@ -13,6 +13,7 @@ import InquiriesView from "./pages/InquiriesView";
 import Message from "./pages/Message";
 import Contracts from "./pages/Contracts";
 import ContractForm from "./pages/ContractForm";
+import CreateNewContract from "./pages/CreateNewContract";
 
 const App = () => {
   const { activeMenu } = useStateContext();
@@ -48,6 +49,10 @@ const App = () => {
                   <Route
                     path="/contracts/contract-form/:id"
                     element={<ContractForm />}
+                  />
+                  <Route
+                    path="/contracts/create-new-contract"
+                    element={<CreateNewContract />}
                   />
                   <Route path="/inquiries" element={<Inquiries />} />
                   <Route
