@@ -1,5 +1,7 @@
 @import url("https://cdn.syncfusion.com/ej2/material.css");
 @import url('https://fonts.cdnfonts.com/css/ds-digital');
+@import '../node_modules/@syncfusion/ej2-base/styles/material3.css';
+@import '../node_modules/@syncfusion/ej2-layouts/styles/material3.css';
 
 ::-webkit-scrollbar {
   width: 6px;

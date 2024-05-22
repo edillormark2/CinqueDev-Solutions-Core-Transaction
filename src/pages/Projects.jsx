@@ -11,7 +11,8 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { RiPassPendingLine } from "react-icons/ri";
 import { GoGoal } from "react-icons/go";
 import { MdDoneOutline } from "react-icons/md";
-import { FaPause } from "react-icons/fa6";
+import { PiPause } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
 
 const ProjectGridStatus = ({ checkStatus }) => {
   const getStatusBgClass = status => {
@@ -72,6 +73,7 @@ const TeamMembers = ({ team }) => {
 
 const Projects = () => {
   const [projectsData, setProjectsData] = useState(projectsDummyData);
+  const navigate = useNavigate();
 
   // Calculate totals
   const totalProjects = projectsData.length;
@@ -133,7 +135,11 @@ const Projects = () => {
             placement="left"
             TransitionComponent={Fade}
           >
-            <div className="p-2 my-2 rounded-lg text-black cursor-pointer border">
+            <div
+              onClick={() =>
+                navigate(`/projects/project-details/${params.row.id}`)}
+              className="p-2 my-2 rounded-lg text-black cursor-pointer border"
+            >
               <MdOutlineInfo size={18} className="text-gray-600" />
             </div>
           </Tooltip>
@@ -211,7 +217,7 @@ const Projects = () => {
           </div>
           <div className="flex gap-4 bg-white p-4 rounded-xl w-full md:w-80">
             <div className="bg-blue-100 px-3 py-1 rounded-xl text-blue-500 flex justify-center ">
-              <FaPause size={28} className="self-center items-center" />
+              <PiPause size={28} className="self-center items-center" />
             </div>
             <div>
               <p className="text-2xl font-semibold">
