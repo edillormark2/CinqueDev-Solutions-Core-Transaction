@@ -1,3 +1,22 @@
+import { randBetweenDate, randFullName, randEmail, randPhoneNumber, randText } from '@ngneat/falso';
+import dayjs from 'dayjs';
+
+export function generateFakeConsultations(count) {
+    if (typeof count !== 'number' || count <= 0) {
+        throw new Error('Invalid count: Please provide a positive integer.');
+    }
+
+    return Array.from({ length: count }, () => ({
+        date: dayjs(randBetweenDate({ from: new Date(), to: new Date('12/31/2024') })).format('MMMM DD, YYYY'),
+        time: dayjs(randBetweenDate({ from: new Date(), to: new Date('12/31/2024') })).format('HH:MM A'),
+        name: randFullName(),
+        email: randEmail(),
+        phone: randPhoneNumber(), // Specific phone format
+        message: `Can we schedule a meeting to discuss your software solutions?`, // Combine text and lorem for message
+        assignees: randFullName(), // Random assignee
+    }));
+}
+
 export const consultationDummyData = [
     {
         date: 'May 11, 2024',

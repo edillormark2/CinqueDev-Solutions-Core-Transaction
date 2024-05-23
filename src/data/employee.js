@@ -1,3 +1,15 @@
+import { randFullName } from "@ngneat/falso"
+
+export function generateEmployee(count) {
+  if (typeof count !== 'number' || count <= 0) {
+    throw new Error('Invalid count: Please provide a positive integer.');
+  }
+
+  return Array.from({ length: count }, () => ({
+    name: randFullName(),
+  }));
+}
+
 export const employees = [
   'Mark Daniel Edillor',
   'Ricardo Aron III',
