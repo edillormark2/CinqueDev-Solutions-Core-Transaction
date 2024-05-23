@@ -1,10 +1,10 @@
 import React from "react";
 import { Modal, ModalDialog, Divider, Select, Option, Button } from "@mui/joy";
-import { employees } from "../../data/employee";
+import { generateEmployee } from "../../data/employee";
 
 const Assign = (props) => {
   const { openModal, setOpenModal, title } = props;
-
+  const employees = generateEmployee(20);
   return (
     <Modal open={openModal} onClose={() => { setOpenModal(false) }}>
       <ModalDialog layout="center" variant="plain">
@@ -14,7 +14,7 @@ const Assign = (props) => {
           {
             employees.map((employee, index)=>{
               return (
-                <Option key={index} value={employee}>{employee}</Option>
+                <Option key={index} value={employee.name}>{employee.name}</Option>
               )
             })
           }
