@@ -18,6 +18,7 @@ import ContractForm from "./pages/ContractForm";
 import CreateNewContract from "./pages/CreateNewContract";
 import Projects from "./pages/Projects";
 import ProjectDetails from "./pages/ProjectDetails";
+import OngoingSupport from "./pages/OngoingSupport";
 
 const App = () => {
   const { activeMenu } = useStateContext();
@@ -70,6 +71,7 @@ const App = () => {
                     element={<ProjectDetails />}
                   />
                   <Route path="/product" element={<Product />} />
+                  <Route path="/ongoing-support" element={<OngoingSupport />} />
                   <Route path="/product/detail/:id" element={<ProductView />} />
                 </Routes>
               </div>

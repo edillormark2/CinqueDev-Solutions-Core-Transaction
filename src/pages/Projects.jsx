@@ -187,8 +187,8 @@ const Projects = () => {
         </div>
         <Breadcrumbs links={breadcrumbLinks} />
 
-        <div className="mt-8 flex flex-wrap lg:flex-nowrap gap-4">
-          <div className="flex gap-4 bg-blue-500 p-4 rounded-xl w-full md:w-80 shadow-2xl shadow-primary">
+        <div className="mt-8 flex flex-wrap lg:flex-nowrap justify-center gap-4">
+          <div className="flex gap-4 bg-blue-500 p-4 rounded-xl w-full md:w-80 max-h-24 shadow-2xl shadow-primary">
             <div className="bg-white px-3 py-1 rounded-xl text-blue-500 flex justify-center ">
               <GoGoal size={28} className="self-center items-center" />
             </div>
@@ -196,10 +196,12 @@ const Projects = () => {
               <p className="text-2xl font-semibold text-white">
                 {totalProjects}
               </p>
-              <p className="  text-white">Total projects</p>
+              <p className="  text-white text-base lg:text-sm">
+                Total projects
+              </p>
             </div>
           </div>
-          <div className="flex gap-4 bg-white p-4 rounded-xl w-full md:w-80">
+          <div className="flex gap-4 bg-white p-4 rounded-xl w-full md:w-80  max-h-24  ">
             <div className="bg-blue-100 px-3 py-1 rounded-xl text-blue-500 flex justify-center ">
               <MdDoneOutline size={28} className="self-center items-center" />
             </div>
@@ -207,10 +209,12 @@ const Projects = () => {
               <p className="text-2xl font-semibold">
                 {completedProjects}
               </p>
-              <p className=" text-gray-500">Completed projects</p>
+              <p className=" text-gray-500 text-base lg:text-sm">
+                Completed projects
+              </p>
             </div>
           </div>
-          <div className="flex gap-4 bg-white p-4 rounded-xl w-full md:w-80">
+          <div className="flex gap-4 bg-white p-4 rounded-xl w-full md:w-80  max-h-24  ">
             <div className="bg-blue-100 px-3 py-1 rounded-xl text-blue-500 flex justify-center ">
               <RiPassPendingLine
                 size={28}
@@ -221,10 +225,12 @@ const Projects = () => {
               <p className="text-2xl font-semibold">
                 {inProgressProjects}
               </p>
-              <p className=" text-gray-500">Pending projects</p>
+              <p className=" text-gray-500 text-base lg:text-sm">
+                Pending projects
+              </p>
             </div>
           </div>
-          <div className="flex gap-4 bg-white p-4 rounded-xl w-full md:w-80">
+          <div className="flex gap-4 bg-white p-4 rounded-xl w-full md:w-80  max-h-24 ">
             <div className="bg-blue-100 px-3 py-1 rounded-xl text-blue-500 flex justify-center ">
               <PiPause size={28} className="self-center items-center" />
             </div>
@@ -232,7 +238,9 @@ const Projects = () => {
               <p className="text-2xl font-semibold">
                 {notStartedProjects}
               </p>
-              <p className=" text-gray-500">Not started projects </p>
+              <p className=" text-gray-500 text-base lg:text-sm">
+                Not started projects{" "}
+              </p>
             </div>
           </div>
         </div>
