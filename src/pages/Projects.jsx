@@ -13,6 +13,7 @@ import { GoGoal } from "react-icons/go";
 import { MdDoneOutline } from "react-icons/md";
 import { PiPause } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
+import AddProjectsPopup from "../components/AddProjectsPopup";
 
 const ProjectGridStatus = ({ checkStatus }) => {
   const getStatusBgClass = status => {
@@ -73,6 +74,7 @@ const TeamMembers = ({ team }) => {
 
 const Projects = () => {
   const [projectsData, setProjectsData] = useState(projectsDummyData);
+  const [openCreatePopup, setOpenCreatePopup] = useState(false);
   const navigate = useNavigate();
 
   // Calculate totals
@@ -157,6 +159,10 @@ const Projects = () => {
     }
   ];
 
+  const handleOpenCreate = () => {
+    setOpenCreatePopup(true);
+  };
+
   const breadcrumbLinks = [
     { to: "/dashboard", label: "Home" },
     { to: "", label: "Projects" }
@@ -172,7 +178,10 @@ const Projects = () => {
               The data shown here is aggregated as of the year 2024
             </p>
           </div>
-          <div className="bg-primary w-full md:w-44 text-white rounded-md py-2 px-4 my-4 flex justify-center gap-4 cursor-pointer hover:opacity-75 self-center">
+          <div
+            onClick={handleOpenCreate}
+            className="bg-primary w-full md:w-44 text-white rounded-md py-2 px-4 my-4 flex justify-center gap-4 cursor-pointer hover:opacity-75 self-center"
+          >
             Add Project <MdAdd size={22} className="self-center" />
           </div>
         </div>
@@ -248,6 +257,10 @@ const Projects = () => {
           />
         </div>
       </div>
+      <AddProjectsPopup
+        openCreatePopup={openCreatePopup}
+        setOpenCreatePopup={setOpenCreatePopup}
+      />
     </div>
   );
 };

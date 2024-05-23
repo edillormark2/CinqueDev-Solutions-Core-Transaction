@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import Breadcrumbs from "../components/Breadcrumbs";
 import { projectsDummyData } from "../data/projects";
+import { FaPlus } from "react-icons/fa";
 import {
   VerticalTimeline,
   VerticalTimelineElement
@@ -19,6 +20,10 @@ import {
 const ProjectDetails = () => {
   const { id } = useParams();
   const project = projectsDummyData.find(proj => proj.id === parseInt(id));
+
+  if (!project) {
+    return <div>Project not found</div>;
+  }
 
   const breadcrumbLinks = [
     { to: "/dashboard", label: "Home" },
@@ -72,7 +77,7 @@ const ProjectDetails = () => {
   ];
 
   const calculateStartDate = phaseIndex => {
-    const daysToAdd = phaseIndex * 10;
+    const daysToAdd = phaseIndex * 10; 
     const startDate = project.startdate ? new Date(project.startdate) : null;
 
     if (startDate) {
@@ -88,7 +93,7 @@ const ProjectDetails = () => {
       return "Not Started";
     }
 
-    return "";
+    return ""; 
   };
 
   const calculatePhaseStyle = phaseIndex => {
@@ -107,26 +112,70 @@ const ProjectDetails = () => {
     }
   };
 
+  const getStatusClass = status => {
+    switch (status) {
+      case "Completed":
+        return "text-green-500";
+      case "In Progress":
+        return "text-yellow-500";
+      case "Not Started":
+        return "text-red-500";
+      default:
+        return "text-gray-500";
+    }
+  };
+
   return (
     <div className="mx-4 md:mx-12 my-20 md:my-8">
       <div>
         <div className="flex flex-col md:flex-row justify-between">
           <div className="my-4">
-            <p className="text-3xl font-semibold ">Project Details</p>
+            <p className="text-3xl font-semibold">Project Details</p>
           </div>
         </div>
         <Breadcrumbs links={breadcrumbLinks} />
         <div className="mt-10">
-          <p className="text-2xl font-semibold">
+          <p className="text-3xl font-semibold my-2">
             {project.projectname}
           </p>
-          <p>
-            Project progress: {project.completionrate}%
-          </p>
-          <p>
-            Status: {project.status}
-          </p>
-          
+          <div className="flex gap-2">
+            <p className="font-semibold">Project progress:</p>{" "}
+            <p className="text-primary">{project.completionrate}%</p>
+          </div>
+          <div className="flex gap-2">
+            <p className="font-semibold">Project status:</p>
+            <p className={getStatusClass(project.status)}>
+              {project.status}
+            </p>
+          </div>
+          <div>
+            <p className="text-base font-semibold ">
+              Assigned Dev team members
+            </p>
+            <div className="flex flex-wrap mt-2">
+              {project.teams && project.teams.length > 0
+                ? project.teams.map((member, index) =>
+                    <div
+                      key={index}
+                      className="flex flex-col items-center mr-4 mb-4"
+                    >
+                      <img
+                        src={member}
+                        alt={`Team member ${index + 1}`}
+                        className="w-16 h-16 rounded-full object-cover ring-2 ring-white"
+                      />
+                    </div>
+                  )
+                : <p>No team members available</p>}
+              {(project.status === "Not Started" ||
+                project.status === "In Progress") &&
+                <div className="flex flex-col items-center mr-4 mb-4">
+                  <div title="Add Members" className="flex justify-center bg-gray-400 rounded-full ring-2 ring-white w-16 h-16 cursor-pointer hover:opacity-75">
+                    <FaPlus size={22} className="self-center text-white" />
+                  </div>
+                </div>}
+            </div>
+          </div>
           <div className="mt-8">
             <VerticalTimeline lineColor="#E5E8E8">
               {phases.map((phase, index) =>
