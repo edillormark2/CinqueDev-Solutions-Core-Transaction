@@ -11,7 +11,7 @@ export const productDummyData = [
         expiration: '09/25',
         securityCode: '789',
         product: 'Enterprise Resource Planning System',
-        price: '5000',
+        price: '50000',
         date: '2024-05-22',
         time: '10:30:00'  
     },
@@ -27,7 +27,7 @@ export const productDummyData = [
         expiration: '08/24',
         securityCode: '321',
         product: 'Accounting Software',
-        price: '3000',
+        price: '30000',
         date: '2024-05-22',
         time: '11:45:00'  
     },
@@ -43,7 +43,7 @@ export const productDummyData = [
         expiration: '11/23',
         securityCode: '654',
         product: 'Human Resource Management System',
-        price: '4500',
+        price: '45000',
         date: '2024-05-22',
         time: '13:15:00'  
     },
@@ -59,7 +59,7 @@ export const productDummyData = [
         expiration: '07/26',
         securityCode: '987',
         product: 'Project Management Software',
-        price: '3200',
+        price: '32000',
         date: '2024-05-22',
         time: '14:20:00'  
     },
@@ -75,7 +75,7 @@ export const productDummyData = [
         expiration: '05/27',
         securityCode: '246',
         product: 'Document Management System',
-        price: '3800',
+        price: '38000',
         date: '2024-05-22',
         time: '15:45:00'  
     },
@@ -91,7 +91,7 @@ export const productDummyData = [
         expiration: '03/28',
         securityCode: '135',
         product: 'Business Intelligence Tools',
-        price: '4200',
+        price: '42000',
         date: '2024-05-22',
         time: '16:55:00'  
     },
@@ -107,7 +107,7 @@ export const productDummyData = [
         expiration: '02/29',
         securityCode: '802',
         product: 'Inventory Management System',
-        price: '4700',
+        price: '47000',
         date: '2024-05-22',
         time: '17:30:00'  
     },
@@ -123,7 +123,7 @@ export const productDummyData = [
         expiration: '04/30',
         securityCode: '579',
         product: 'Point of Sale',
-        price: '3300',
+        price: '33000',
         date: '2024-05-22',
         time: '18:10:00'  
     },
@@ -139,7 +139,7 @@ export const productDummyData = [
         expiration: '06/31',
         securityCode: '246',
         product: 'Customer Support System',
-        price: '3900',
+        price: '39000',
         date: '2024-05-22',
         time: '19:20:00'  
     },
@@ -155,7 +155,7 @@ export const productDummyData = [
         expiration: '01/32',
         securityCode: '813',
         product: 'Supply Chain Management',
-        price: '4400',
+        price: '44000',
         date: '2024-05-22',
         time: '20:45:00'  
     },

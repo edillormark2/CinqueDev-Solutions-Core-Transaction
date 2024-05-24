@@ -32,7 +32,6 @@ const Consultation = () => {
     {
       field: "date",
       headerName: "Date",
-      width: '120',
       flex: 1,
       renderCell: (params) => (
         <div className="flex flex-col">
@@ -48,14 +47,13 @@ const Consultation = () => {
     {
       field: "name",
       headerName: "Name",
-      width: '250',
-      flex: 1,
+      width: 250,
       renderCell: (params) => (
         <div className="flex flex-col">
           <p>
             {params.row.name}
           </p>
-          <p className=" text-gray-500">
+          <p className=" text-gray-500 overflow-hidden text-ellipsis">
             {params.row.email}
           </p>
         </div>
@@ -64,8 +62,7 @@ const Consultation = () => {
     {
       field: "message",
       headerName: "Message",
-      width: '450',
-      flex: 1,
+      width: 350,
       renderCell: (params) => (
         <p>{`Hi I am ${params.row.name} ${params.row.message}`}</p>
       )
@@ -73,15 +70,15 @@ const Consultation = () => {
     {
       field: "assignees",
       headerName: "Assignees",
-      width: '250',
       flex: 1,
     },
     {
       field: "action",
       headerName: "Action",
-      width: '100',
+      headerAlign: 'center',
       align: "center",
-      flex: 1,
+      sortable: false,
+      width: 150,
       renderCell: params =>
         <div className="flex justify-center gap-2">
           <Tooltip

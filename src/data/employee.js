@@ -6,7 +6,7 @@ export function generateEmployee(count) {
   }
 
   return Array.from({ length: count }, () => ({
-    name: randFullName(),
+    name: randFullName({ withAccents: false }),
   }));
 }
 

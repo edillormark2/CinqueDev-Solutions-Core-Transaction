@@ -8,12 +8,12 @@ export function generateFakeConsultations(count) {
 
     return Array.from({ length: count }, () => ({
         date: dayjs(randBetweenDate({ from: new Date(), to: new Date('12/31/2024') })).format('MMMM DD, YYYY'),
-        time: dayjs(randBetweenDate({ from: new Date(), to: new Date('12/31/2024') })).format('HH:MM A'),
-        name: randFullName(),
+        time: dayjs(randBetweenDate({ from: new Date(), to: new Date('12/31/2024') })).format('HH:00 A'),
+        name: randFullName({ withAccents: false }),
         email: randEmail(),
         phone: randPhoneNumber(), // Specific phone format
         message: `Can we schedule a meeting to discuss your software solutions?`, // Combine text and lorem for message
-        assignees: randFullName(), // Random assignee
+        assignees: randFullName({ withAccents: false }), // Random assignee
     }));
 }
 
