@@ -1,12 +1,12 @@
 import { React, useState } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Divider, Select, Option, Button } from "@mui/joy";
 import { MdOutlineMailOutline } from "react-icons/md";
-import { inquiriesDummyData } from "../data/inquiries";
 import StatusChip from "../components/StatusChip";
 import { developerTeams } from "../data/employee";
 import Message from "../components/modals/Message";
 import { useNavigate } from "react-router-dom";
+import Breadcrumbs from "../components/Breadcrumbs.jsx";
 
 const InquiriesView = () => {
   const location = useLocation();
@@ -23,10 +23,18 @@ const InquiriesView = () => {
     return new Date(date).toLocaleDateString('en-GB', options);
   };
 
+  const breadcrumbLinks = [
+    { to: "/dashboard", label: "Home" },
+    { to: "/inquiries", label: "Inquiries" },
+    { to: "", label: "Details" }
+  ];
+
   return (
-    <div className="my-28 md:my-16 mx-10 md:mx-16">
-      <h1 className="text-2xl font-semibold mb-2">Inquiry Details</h1>
-      <Divider />
+    <div className="mx-4 md:mx-12 my-20 md:my-8">
+      <div className="flex flex-col md:flex-row justify-between">
+        <div className="text-3xl font-semibold my-4">Inquiries</div>
+      </div>
+      <Breadcrumbs links={breadcrumbLinks} />
       <div className="mt-4 p-4 shadow-md bg-white rounded-lg">
         <div className="mb-4 flex items-center">
           <StatusChip text={data.status} />

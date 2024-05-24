@@ -11,6 +11,24 @@ function randPriceRange() {
     return priceRanges[randomIndex];
 }
 
+  function randMessage() {
+    const applicationNeeds = [
+        "Our business requires an application to streamline operations and enhance customer experience.",
+        "I'm seeking an application solution to optimize efficiency and productivity within our company.",
+        "Our company is in need of an application to improve internal processes and facilitate communication.",
+        "We are looking to develop an application tailored to the specific needs of our business.",
+        "I'm interested in acquiring an application that can help scale our business operations effectively.",
+        "We're exploring the possibility of implementing an application to better serve our customers and clients.",
+        "Our company is actively seeking a customized application to support our growth and expansion.",
+        "We require an application solution that can integrate seamlessly with our existing systems and workflows.",
+        "I'm in the market for an application that can address the unique challenges faced by our company.",
+        "Our business is in need of a reliable application to stay competitive in today's market."
+      ];
+
+    const randomIndex = Math.floor(Math.random() * applicationNeeds.length);
+    return applicationNeeds[randomIndex];
+}
+
 function randService() {
     const services = [
         'Website Development',
@@ -33,6 +51,7 @@ function randStatus() {
         "Cancelled",
         "Completed",
 
+        //OTHER STATUS
         /* "Pending Response",
         "Follow-Up Required",
         "Quoted",
@@ -73,7 +92,7 @@ export function generateFakeInquiries(count) {
         email: randEmail(),
         country: randCountry(),
         budget: randPriceRange(),
-        message: "I need an application",
+        message: randMessage(),
         service: randService(),
         status: randStatus(),
         team: randDevTeam(),

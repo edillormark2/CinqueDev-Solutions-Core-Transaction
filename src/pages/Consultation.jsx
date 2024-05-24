@@ -57,6 +57,9 @@ const Consultation = () => {
           <p className=" text-gray-500 overflow-hidden text-ellipsis">
             {params.row.email}
           </p>
+          <p className=" text-gray-500 overflow-hidden text-ellipsis">
+            {params.row.phone}
+          </p>
         </div>
       )
     },
@@ -160,6 +163,7 @@ const Consultation = () => {
           }}
           rows={consultationData}
           columns={columns}
+          autoHeight={true}
           getRowHeight={() => 'auto'}
           pageSizeOptions={[10, 20, 50, 100]}
           getRowId={row => row.name}

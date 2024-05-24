@@ -73,6 +73,8 @@ const App = () => {
                   <Route path="/product" element={<Product />} />
                   <Route path="/ongoing-support" element={<OngoingSupport />} />
                   <Route path="/product/detail/:id" element={<ProductView />} />
+
+                  <Route path="*" element={<Dashboard />} />
                 </Routes>
               </div>
             </div>
