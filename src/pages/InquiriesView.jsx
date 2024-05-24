@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Divider, Select, Option, Button } from "@mui/joy";
+import { Select, Option, Button } from "@mui/joy";
 import { MdOutlineMailOutline } from "react-icons/md";
 import StatusChip from "../components/StatusChip";
 import { developerTeams } from "../data/employee";
