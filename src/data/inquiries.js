@@ -1,11 +1,89 @@
-export const services = [
-    'Website Development',
-    'Mobile App Development',
-    'Web App Development',
-    'Desktop App Development',
-    'Cross-platform Development',
-    'Other'
-]
+import { randFullName, randCountry, randEmail } from "@ngneat/falso";
+
+function randPriceRange() {
+    const priceRanges = [
+        "₱ 10,000 - ₱ 20,000",
+        "₱ 20,000 - ₱ 50,000",
+        "₱ 50,000 - ₱ 100,000"
+    ];
+
+    const randomIndex = Math.floor(Math.random() * priceRanges.length);
+    return priceRanges[randomIndex];
+}
+
+function randService() {
+    const services = [
+        'Website Development',
+        'Mobile App Development',
+        'Web App Development',
+        'Desktop App Development',
+        'Cross-platform Development',
+        'Other'
+    ]
+
+    const randomIndex = Math.floor(Math.random() * services.length);
+    return services[randomIndex];
+}
+
+function randStatus() {
+    const status = [
+        "New",
+        "In Progress",
+        "Accepted",
+        "Cancelled",
+        "Completed",
+
+        /* "Pending Response",
+        "Follow-Up Required",
+        "Quoted",
+        "Rejected",
+        "Closed", */
+    ];
+
+    const randomIndex = Math.floor(Math.random() * status.length);
+    return status[randomIndex];
+}
+
+function randDevTeam() {
+    const developerTeams = [
+        "Alpha Developer Team",
+        "Bravo Developer Team",
+        "Charlie Developer Team",
+        "Delta Developer Team",
+        "Echo Developer Team",
+        "Foxtrot Developer Team",
+        "Golf Developer Team",
+        "Hotel Developer Team",
+        "India Developer Team",
+        "Juliet Developer Team"
+    ];
+
+    const randomIndex = Math.floor(Math.random() * developerTeams.length);
+    return developerTeams[randomIndex];
+}
+
+export function generateFakeInquiries(count) {
+    if (typeof count !== 'number' || count <= 0) {
+        throw new Error('Invalid count: Please provide a positive integer.');
+    }
+
+    return Array.from({ length: count }, (_, index) => ({
+        id: index + 1,
+        name: randFullName({ withAccents: false }),
+        email: randEmail(),
+        country: randCountry(),
+        budget: randPriceRange(),
+        message: "I need an application",
+        service: randService(),
+        status: randStatus(),
+        team: randDevTeam(),
+    }));
+}
+
+export function getStatusCount(data, status) {
+    const filteredData = data.filter(inquiry => inquiry.status === status);
+    return filteredData.length;
+  }
 
 export const inquiriesDummyData = [
     {

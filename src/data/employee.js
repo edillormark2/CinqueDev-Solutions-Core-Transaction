@@ -18,11 +18,15 @@ export const employees = [
   'Julian Jules Pardi'
 ]
 
-export const teams = [
-  'Web Developer Team 1',
-  'Web Developer Team 2',
-  'Mobile Developer Team 1',
-  'Mobile Developer Team 2',
-  'Desktop Developer Team 1',
-  'Desktop Developer Team 2',
-]
+export const developerTeams = [
+  "Alpha Developer Team",
+  "Bravo Developer Team",
+  "Charlie Developer Team",
+  "Delta Developer Team",
+  "Echo Developer Team",
+  "Foxtrot Developer Team",
+  "Golf Developer Team",
+  "Hotel Developer Team",
+  "India Developer Team",
+  "Juliet Developer Team"
+];
