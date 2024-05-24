@@ -32,8 +32,8 @@ const Consultation = () => {
     {
       field: "date",
       headerName: "Date",
-      width: '120',
       flex: 1,
+      minWidth: 150,
       renderCell: (params) => (
         <div className="flex flex-col">
           <p>
@@ -48,15 +48,17 @@ const Consultation = () => {
     {
       field: "name",
       headerName: "Name",
-      width: '250',
-      flex: 1,
+      width: 250,
       renderCell: (params) => (
         <div className="flex flex-col">
           <p>
             {params.row.name}
           </p>
-          <p className=" text-gray-500">
+          <p className=" text-gray-500 overflow-hidden text-ellipsis">
             {params.row.email}
+          </p>
+          <p className=" text-gray-500 overflow-hidden text-ellipsis">
+            {params.row.phone}
           </p>
         </div>
       )
@@ -64,8 +66,7 @@ const Consultation = () => {
     {
       field: "message",
       headerName: "Message",
-      width: '450',
-      flex: 1,
+      width: 350,
       renderCell: (params) => (
         <p>{`Hi I am ${params.row.name} ${params.row.message}`}</p>
       )
@@ -73,15 +74,16 @@ const Consultation = () => {
     {
       field: "assignees",
       headerName: "Assignees",
-      width: '250',
       flex: 1,
+      minWidth: 150,
     },
     {
       field: "action",
       headerName: "Action",
-      width: '100',
+      headerAlign: 'center',
       align: "center",
-      flex: 1,
+      sortable: false,
+      width: 150,
       renderCell: params =>
         <div className="flex justify-center gap-2">
           <Tooltip
@@ -122,29 +124,29 @@ const Consultation = () => {
       <Breadcrumbs links={breadcrumbLinks} />
 
       <div className="mt-8 flex flex-wrap lg:flex-nowrap gap-4">
-          <div className="flex gap-4 bg-blue-500 p-4 rounded-xl w-full md:w-80 shadow-2xl shadow-primary">
-            <div className="bg-white px-3 py-1 rounded-xl text-blue-500 flex justify-center ">
-              <GoGoal size={28} className="self-center items-center" />
-            </div>
-            <div>
-              <p className="text-2xl font-semibold text-white">
-                {consultationData.length}
-              </p>
-              <p className="  text-white">Total</p>
-            </div>
+        <div className="flex gap-4 bg-blue-500 p-4 rounded-xl w-full md:w-80 shadow-2xl shadow-primary">
+          <div className="bg-white px-3 py-1 rounded-xl text-blue-500 flex justify-center ">
+            <GoGoal size={28} className="self-center items-center" />
           </div>
-          <div className="flex gap-4 bg-white p-4 rounded-xl w-full md:w-80">
-            <div className="bg-blue-100 px-3 py-1 rounded-xl text-blue-500 flex justify-center ">
-              <MdDoneOutline size={28} className="self-center items-center" />
-            </div>
-            <div>
-              <p className="text-2xl font-semibold">
-                28
-              </p>
-              <p className=" text-gray-500">Completed</p>
-            </div>
+          <div>
+            <p className="text-2xl font-semibold text-white">
+              {consultationData.length}
+            </p>
+            <p className="  text-white">Total</p>
           </div>
         </div>
+        <div className="flex gap-4 bg-white p-4 rounded-xl w-full md:w-80">
+          <div className="bg-blue-100 px-3 py-1 rounded-xl text-blue-500 flex justify-center ">
+            <MdDoneOutline size={28} className="self-center items-center" />
+          </div>
+          <div>
+            <p className="text-2xl font-semibold">
+              28
+            </p>
+            <p className=" text-gray-500">Completed</p>
+          </div>
+        </div>
+      </div>
 
       <div className="my-10">
         <DataGrid
@@ -161,6 +163,7 @@ const Consultation = () => {
           }}
           rows={consultationData}
           columns={columns}
+          autoHeight={true}
           getRowHeight={() => 'auto'}
           pageSizeOptions={[10, 20, 50, 100]}
           getRowId={row => row.name}

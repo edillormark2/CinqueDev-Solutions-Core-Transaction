@@ -1,6 +1,24 @@
 import { randBetweenDate, randFullName, randEmail, randPhoneNumber, randText } from '@ngneat/falso';
 import dayjs from 'dayjs';
 
+function randMeetingRequest() {
+    const meetingRequests = [
+        "Could we arrange a meeting to explore your software solutions?",
+        "I'm interested in scheduling a consultation to discuss our company's needs.",
+        "Would it be possible to set up a meeting to review your software offerings?",
+        "I'm keen to discuss potential software solutions for our company. Can we schedule a meeting?",
+        "Can we organize a consultation session to assess how your software can benefit our company?",
+        "I'd like to request a meeting to explore your software solutions further.",
+        "Could we schedule a consultation to discuss our company's requirements and your software offerings?",
+        "I'm seeking a consultation to understand how your software can address our company's needs.",
+        "Can we arrange a meeting to discuss the software solutions you provide?",
+        "I want to schedule a consultation to explore how your software can support our company's goals."
+      ];
+
+    const randomIndex = Math.floor(Math.random() * meetingRequests.length);
+    return meetingRequests[randomIndex];
+}
+
 export function generateFakeConsultations(count) {
     if (typeof count !== 'number' || count <= 0) {
         throw new Error('Invalid count: Please provide a positive integer.');
@@ -8,12 +26,12 @@ export function generateFakeConsultations(count) {
 
     return Array.from({ length: count }, () => ({
         date: dayjs(randBetweenDate({ from: new Date(), to: new Date('12/31/2024') })).format('MMMM DD, YYYY'),
-        time: dayjs(randBetweenDate({ from: new Date(), to: new Date('12/31/2024') })).format('HH:MM A'),
-        name: randFullName(),
+        time: dayjs(randBetweenDate({ from: new Date(), to: new Date('12/31/2024') })).format('HH:00 A'),
+        name: randFullName({ withAccents: false }),
         email: randEmail(),
-        phone: randPhoneNumber(), // Specific phone format
-        message: `Can we schedule a meeting to discuss your software solutions?`, // Combine text and lorem for message
-        assignees: randFullName(), // Random assignee
+        phone: randPhoneNumber(),
+        message: randMeetingRequest(),
+        assignees: randFullName({ withAccents: false }), // Random assignee
     }));
 }
 

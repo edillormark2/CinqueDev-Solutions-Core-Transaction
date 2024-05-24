@@ -20,7 +20,7 @@ const StatusChip = ({text}) => {
   });
 
   return (
-      <Chip sx={{backgroundColor: `${bgColor}`, outline: `1px ${color} solid`}}>
+      <Chip sx={{backgroundColor: `${bgColor}`,/*  outline: `1px ${color} solid` */}}>
         <p style={{ color: `${color}` }}>{text}</p>
       </Chip>
     )

@@ -134,3 +134,10 @@ button {
 .justifyAlign {
   text-align: justify;
 }
+
+.transaction{
+  background-position: center;
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-image: url(./assets/CDS_FULL-LOGO-O.png);
+}

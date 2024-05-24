@@ -61,7 +61,7 @@ const App = () => {
                   />
                   <Route path="/inquiries" element={<Inquiries />} />
                   <Route
-                    path="/inquiries/detail/:id"
+                    path="/inquiries/detail"
                     element={<InquiriesView />}
                   />
                   <Route path="/inquiries/message/:id" element={<Message />} />
@@ -71,8 +71,10 @@ const App = () => {
                     element={<ProjectDetails />}
                   />
                   <Route path="/product" element={<Product />} />
+                  <Route path="/product/detail" element={<ProductView />} />
                   <Route path="/ongoing-support" element={<OngoingSupport />} />
-                  <Route path="/product/detail/:id" element={<ProductView />} />
+
+                  <Route path="*" element={<Dashboard />} />
                 </Routes>
               </div>
             </div>
