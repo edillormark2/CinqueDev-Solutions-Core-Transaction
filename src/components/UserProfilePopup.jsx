@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Divider from "@mui/material/Divider";
 import { IoSettingsOutline } from "react-icons/io5";
 import { VscSignOut } from "react-icons/vsc";
-import profile from "../assets/profile.png";
+import profile from "../assets/mepic.jpg";
 
 const UserProfilePopup = ({ closePopup }) => {
   const handleSignOut = () => {};

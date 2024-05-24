@@ -62,8 +62,8 @@ const OngoingSupport = () => {
         </div>
         <Breadcrumbs links={breadcrumbLinks} />
 
-        <div className="flex justify-end gap-4">
-          <div className="relative">
+        <div className="flex justify-end gap-4 mt-4 ">
+          <div className="relative w-full md:w-60">
             <input
               placeholder="Search..."
               className="form-control w-full pl-4 py-2 rounded-full border  text-sm sm:text-base pr-8 bg-white"
@@ -77,7 +77,7 @@ const OngoingSupport = () => {
           </div>
         </div>
 
-        <div className="mt-8">
+        <div className="mt-2">
           <div className="bg-white p-4 rounded-xl flex flex-col lg:flex-row justify-between">
             <div className="w-full lg:w-1/2 flex">
               <div className="w-full">
@@ -118,7 +118,7 @@ const OngoingSupport = () => {
         </div>
 
         <div className="flex flex-col-reverse lg:flex-row w-full gap-4">
-          <div className="w-full flex flex-wrap mt-6">
+          <div className="w-full flex flex-wrap mt-2">
             {softwareSupportData.map((supportItem, index) =>
               <div
                 key={supportItem.id}
