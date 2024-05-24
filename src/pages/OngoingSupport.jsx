@@ -5,12 +5,21 @@ import dayjs from "dayjs";
 import { FiCalendar } from "react-icons/fi";
 import { GoGoal } from "react-icons/go";
 import { GoDotFill } from "react-icons/go";
+import { useNavigate } from "react-router-dom";
 
 const OngoingSupport = () => {
   const breadcrumbLinks = [
     { to: "/dashboard", label: "Home" },
     { to: "", label: "Ongoing Support" }
   ];
+  const navigate = useNavigate();
+
+  const handleViewDetails = (id, color) => {
+    navigate(`/ongoing-support/subscription-support-details/${id}`, {
+      state: { color }
+    });
+    window.scrollTo({ top: 0 });
+  };
 
   const calculateProgress = (startDate, endDate) => {
     const currentYear = dayjs().year();
@@ -43,7 +52,7 @@ const OngoingSupport = () => {
   ];
 
   return (
-    <div className="mx-0 md:mx-12 my-20 md:my-8">
+    <div className="mx-4 md:mx-12 my-20 md:my-8">
       <div>
         <div className="flex flex-col md:flex-row justify-between">
           <div className="my-4">
@@ -59,7 +68,14 @@ const OngoingSupport = () => {
                 key={supportItem.id}
                 className="w-full sm:w-full md:w-1/2 2xl:w-1/2 px-0 md:px-2 py-2"
               >
-                <div className="bg-white rounded-lg p-6 shadow-sm cursor-pointer hover:shadow-xl transform transition-transform duration-300 hover:scale-95">
+                <div
+                  onClick={() =>
+                    handleViewDetails(
+                      supportItem.id,
+                      colors[index % colors.length]
+                    )}
+                  className="bg-white rounded-lg p-6 shadow-sm cursor-pointer hover:shadow-xl transform transition-transform duration-300 hover:scale-95"
+                >
                   <div className="flex justify-start">
                     <div
                       className={`${colors[
@@ -74,12 +90,12 @@ const OngoingSupport = () => {
                   </p>
                   <div className="flex justify-between">
                     <p className="flex gap-2">
-                      <FiCalendar className="self-center" />Start:{" "}
-                      {supportItem.startDate}
+                      <FiCalendar className="self-center" />
+                      Start: {dayjs(supportItem.startDate).format("MMM D")}
                     </p>
                     <p className="flex gap-2">
-                      <GoGoal className="self-center" />End:{" "}
-                      {supportItem.endDate}
+                      <GoGoal className="self-center" />
+                      End: {dayjs(supportItem.endDate).format("MMM D")}
                     </p>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-1 dark:bg-gray-700 mt-4">
@@ -107,7 +123,7 @@ const OngoingSupport = () => {
                         .map((member, index) =>
                           <img
                             key={index}
-                            src={member}
+                            src={member.image}
                             alt="team member"
                             className="w-8 h-8 rounded-full mx-1"
                           />
@@ -124,9 +140,10 @@ const OngoingSupport = () => {
           </div>
 
           <div className="flex w-full lg:w-2/5 mt-12">
-            <div className=" rounded-xl w-full max-h-screen  border border-gray-300 bg-gray-100">
+            <div className="rounded-xl w-full max-h-screen border border-gray-300 bg-gray-100">
               <p className="flex gap-4 bg-white border-b-1 border-gray-300 p-4 rounded-t-xl font-semibold text-lg text-gray-500">
-                <GoDotFill className="self-center text-green-500" />Overview
+                <GoDotFill className="self-center text-green-500" />
+                Overview
               </p>
               <div className="p-4">
                 <div className="bg-white p-4 rounded-xl border-l-4 border-gray-300 mb-4">
@@ -134,7 +151,7 @@ const OngoingSupport = () => {
                   <p className="text-sm text-gray-500 ">This month</p>
                   <p className="text-3xl font-bold my-2">12</p>
                 </div>
-                <div className="bg-white p-4 rounded-xl border-l-4 border-gray-300  mb-4">
+                <div className="bg-white p-4 rounded-xl border-l-4 border-gray-300 mb-4">
                   <p className="text-lg">Number of Software Issues</p>
                   <p className="text-sm text-gray-500 ">This month</p>
                   <p className="text-3xl font-bold my-2">6</p>
