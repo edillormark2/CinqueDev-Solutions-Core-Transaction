@@ -49,12 +49,11 @@ const SupportDetails = () => {
       <div>
         <div className="flex flex-col md:flex-row justify-between">
           <div className="my-4">
-            <p className="text-3xl font-semibold">
-              Support details
-            </p>
+            <p className="text-3xl font-semibold">Support details</p>
           </div>
         </div>
         <Breadcrumbs links={breadcrumbLinks} />
+        
 
         <div className="mt-10 flex flex-col lg:flex-row gap-4">
           <div className="bg-white rounded-lg p-4 lg:p-8 w-full">
@@ -68,21 +67,21 @@ const SupportDetails = () => {
             </div>
 
             <div className="ml-4">
-              <div className="flex gap-2 my-4">
+              <div className="flex gap-2 my-3">
                 <p className="w-1/2 font-semibold">Company name</p>
                 <p className="w-1/2">
                   {support.companyName}
                 </p>
               </div>
-
-              <div className="flex gap-2 my-4">
+              <Divider />
+              <div className="flex gap-2 my-3">
                 <p className="w-1/2 font-semibold">System name</p>
                 <p className="w-1/2 self-start">
                   {support.systemName}
                 </p>
               </div>
-
-              <div className="flex gap-2 my-4">
+              <Divider />
+              <div className="flex gap-2 my-3">
                 <p className="w-1/2 font-semibold">Email</p>
                 <p className="w-1/2">
                   {support.email}
@@ -95,19 +94,21 @@ const SupportDetails = () => {
                 Status
               </p>
               <div className="ml-4">
-                <div className="flex gap-2 my-4">
+                <div className="flex gap-2 my-3">
                   <p className="w-1/2 font-semibold">Last update</p>
                   <p className="w-1/2">
                     {support.updateStatus}
                   </p>
                 </div>
-                <div className="flex gap-2 my-4">
+                <Divider />
+                <div className="flex gap-2 my-3">
                   <p className="w-1/2 font-semibold">Start date</p>
                   <p className="w-1/2">
                     {support.startDate}
                   </p>
                 </div>
-                <div className="flex gap-2 my-4">
+                <Divider />
+                <div className="flex gap-2 my-3">
                   <p className="w-1/2 font-semibold">End date</p>
                   <p className="w-1/2">
                     {support.endDate}

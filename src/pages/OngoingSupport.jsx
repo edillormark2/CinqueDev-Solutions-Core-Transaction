@@ -4,8 +4,9 @@ import { softwareSupportData } from "../data/softwaresupport.js";
 import dayjs from "dayjs";
 import { FiCalendar } from "react-icons/fi";
 import { GoGoal } from "react-icons/go";
-import { GoDotFill } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
+import { IoMdSearch } from "react-icons/io";
+import { MdAdd } from "react-icons/md";
 
 const OngoingSupport = () => {
   const breadcrumbLinks = [
@@ -61,12 +62,67 @@ const OngoingSupport = () => {
         </div>
         <Breadcrumbs links={breadcrumbLinks} />
 
+        <div className="flex justify-end gap-4">
+          <div className="relative">
+            <input
+              placeholder="Search..."
+              className="form-control w-full pl-4 py-2 rounded-full border  text-sm sm:text-base pr-8 bg-white"
+            />
+            <div className="absolute inset-y-0 right-2 flex items-center pr-2 cursor-pointer text-gray-500">
+              <IoMdSearch />
+            </div>
+          </div>
+          <div className="bg-primary text-white p-3 rounded-full cursor-pointer hover:opacity-75 ">
+            <MdAdd className="self-center" size={20} />
+          </div>
+        </div>
+
+        <div className="mt-8">
+          <div className="bg-white p-4 rounded-xl flex flex-col lg:flex-row justify-between">
+            <div className="w-full lg:w-1/2 flex">
+              <div className="w-full">
+                <div className="border-l-2 px-4">
+                  <p className="text-base font-semibold">Ongoing Support</p>
+                  <p className="text-gray-500 text-sm">this month</p>
+                </div>
+                <p className="mt-2 mx-4 text-3xl font-semibold">13</p>
+              </div>
+              <div className="w-full">
+                <div className="border-l-2 px-4">
+                  <p className="text-base font-semibold">Software Issues</p>
+                  <p className="text-gray-500 text-sm">this month</p>
+                </div>
+                <p className="mt-2 mx-4 text-3xl font-semibold">7</p>
+              </div>
+            </div>
+
+            <div className="w-full lg:w-1/2 flex">
+              <div className="w-full">
+                <div className="border-l-2 px-4">
+                  <p className="text-base font-semibold">Solve Issues</p>
+                  <p className="text-gray-500 text-sm">this month</p>
+                </div>
+                <p className="mt-2 mx-4 text-3xl font-semibold">5</p>
+              </div>
+              <div className="w-full">
+                <div className="border-l-2 px-4">
+                  <p className="text-base font-semibold">
+                    Expired Subscription
+                  </p>
+                  <p className="text-gray-500 text-sm">in the last 4 months</p>
+                </div>
+                <p className="mt-2 mx-4 text-3xl font-semibold">2</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="flex flex-col-reverse lg:flex-row w-full gap-4">
-          <div className="w-full flex flex-wrap mt-10">
+          <div className="w-full flex flex-wrap mt-6">
             {softwareSupportData.map((supportItem, index) =>
               <div
                 key={supportItem.id}
-                className="w-full sm:w-full md:w-1/2 2xl:w-1/2 px-0 md:px-2 py-2"
+                className="w-full sm:w-full md:w-1/2 2xl:w-1/3 px-0 md:px-2 py-2"
               >
                 <div
                   onClick={() =>
@@ -137,37 +193,6 @@ const OngoingSupport = () => {
                 </div>
               </div>
             )}
-          </div>
-
-          <div className="flex w-full lg:w-2/5 mt-12">
-            <div className="rounded-xl w-full max-h-screen border border-gray-300 bg-gray-100">
-              <p className="flex gap-4 bg-white border-b-1 border-gray-300 p-4 rounded-t-xl font-semibold text-lg text-gray-500">
-                <GoDotFill className="self-center text-green-500" />
-                Overview
-              </p>
-              <div className="p-4">
-                <div className="bg-white p-4 rounded-xl border-l-4 border-gray-300 mb-4">
-                  <p className="text-lg">Active Software Support</p>
-                  <p className="text-sm text-gray-500 ">This month</p>
-                  <p className="text-3xl font-bold my-2">12</p>
-                </div>
-                <div className="bg-white p-4 rounded-xl border-l-4 border-gray-300 mb-4">
-                  <p className="text-lg">Number of Software Issues</p>
-                  <p className="text-sm text-gray-500 ">This month</p>
-                  <p className="text-3xl font-bold my-2">6</p>
-                </div>
-                <div className="bg-white p-4 rounded-xl border-l-4 border-gray-300 mb-4">
-                  <p className="text-lg">Solve Software Issues</p>
-                  <p className="text-sm text-gray-500 ">This month</p>
-                  <p className="text-3xl font-bold my-2">4</p>
-                </div>
-                <div className="bg-white p-4 rounded-xl border-l-4 border-gray-300 mb-4">
-                  <p className="text-lg">Expired Subscription</p>
-                  <p className="text-sm text-gray-500 ">This month</p>
-                  <p className="text-3xl font-bold my-2">2</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

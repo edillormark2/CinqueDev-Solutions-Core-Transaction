@@ -15,7 +15,7 @@ const CreateNewContract = () => {
       </div>
       <Breadcrumbs links={breadcrumbLinks} />
 
-      <div className="my-8 mx-0 lg:mx-24 xl:mx-36">
+      <div className="my-8 mx-0 xl:mx-20 2xl:mx-36">
         <div className="bg-white border p-8">
           <p className="text-xl font-bold text-center">
             Fill out the form to create a new contract agreement
@@ -108,7 +108,9 @@ const CreateNewContract = () => {
             rows="4"
             placeholder=""
           />
-          <div className="w-full bg-primary p-4 text-center text-white rounded-md cursor-pointer font-semibold hover:opacity-75">Create Contract</div>
+          <div className="w-full bg-primary p-4 text-center text-white rounded-md cursor-pointer font-semibold hover:opacity-75">
+            Create Contract
+          </div>
         </div>
       </div>
     </div>

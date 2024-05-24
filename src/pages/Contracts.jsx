@@ -130,11 +130,11 @@ const Contracts = () => {
         </div>
         <Breadcrumbs links={breadcrumbLinks} />
 
-        <div className="flex flex-col md:flex-row my-4 gap-14">
+        <div className="flex flex-col md:flex-row justify-between xl:justify-start  my-4 gap-4 xl:gap-10">
           {tabs.map(tab =>
             <div
               key={tab.name}
-              className={`flex justify-center md:justify-start mx-16 md:mx-0 font-semibold text-sm p-4 text-center cursor-pointer ${activeTab ===
+              className={`flex justify-center mx-16 md:mx-0 font-semibold text-xs p-4 text-center cursor-pointer ${activeTab ===
               tab.name
                 ? "border-b-2 border-blue-500 component-transition"
                 : "hover:border-b-2 hover:border-gray-300"}`}
@@ -148,7 +148,7 @@ const Contracts = () => {
 
         <div className="mt-10">
           <p className="font-semibold text-gray-500">Folders</p>
-          <div className="w-full flex flex-wrap mt-6">
+          <div className="w-full flex flex-wrap">
             {folders.map(folder =>
               <div
                 key={folder.name}
@@ -211,7 +211,7 @@ const Contracts = () => {
 
         <div className="mt-10">
           <p className="font-semibold text-gray-500">Files</p>
-          <div className="w-full flex flex-wrap mt-6 ">
+          <div className="w-full flex flex-wrap  ">
             {filteredContracts.length > 0
               ? filteredContracts.map(contract =>
                   <div

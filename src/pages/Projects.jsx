@@ -245,7 +245,7 @@ const Projects = () => {
           </div>
         </div>
 
-        <div className="my-10">
+        <div className="bg-white p-4 rounded-lg my-10">
           <DataGrid
             sx={{
               [`& .${gridClasses.cell}:focus, & .${gridClasses.cell}:focus-within`]: {

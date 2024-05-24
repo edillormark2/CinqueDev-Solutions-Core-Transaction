@@ -26,7 +26,7 @@ const ContractForm = () => {
       </div>
       <Breadcrumbs links={breadcrumbLinks} />
 
-      <div className="my-8 mx-0 lg:mx-24 xl:mx-36">
+      <div className="my-8 mx-0 xl:mx-20 2xl:mx-36">
         <div className="bg-white border p-8">
           <div className="flex justify-center">
             <img
@@ -38,7 +38,7 @@ const ContractForm = () => {
           <p className="text-3xl font-bold text-center">
             {contract ? contract.title : "Contract not found"} Agreement
           </p>
-          <div className="mx-0 md:mx-20 mt-10">
+          <div className=" mt-10 px-4">
             <div className="flex gap-2 mt-8">
               <p className="font-semibold">Owner: </p>
               <p>
