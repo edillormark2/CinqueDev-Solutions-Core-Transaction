@@ -12,10 +12,7 @@ import { MdAccessTime } from "react-icons/md";
 
 const Inquiries = () => {
   const navigate = useNavigate();
-  const [inquiriesData, setInquiriesData] = useState([]);
-  useEffect(() => {
-    setInquiriesData(generateFakeInquiries(43));
-  }, []);
+  const [inquiriesData, setInquiriesData] = useState(generateFakeInquiries(43));
 
   const handleViewDetail = (id) => {
     const inquiry = inquiriesData.find(item => item.id === id);
@@ -78,8 +75,10 @@ const Inquiries = () => {
 
   return (
     <div className="mx-4 md:mx-12 my-20 md:my-8">
-      <div className="flex flex-col md:flex-row justify-between">
-        <div className="text-3xl font-semibold my-4">Inquiries</div>
+      <div className="my-4">
+        <div className="flex flex-col md:flex-row justify-between">
+          <div className="text-3xl font-semibold my-4">Inquiries</div>
+        </div>
       </div>
       <Breadcrumbs links={breadcrumbLinks} />
 
@@ -149,7 +148,7 @@ const Inquiries = () => {
           getRowHeight={() => "auto"}
           pageSizeOptions={[10, 20, 50, 100]}
           getRowId={row => row.id}
-          onRowClick={(row) => {handleViewDetail(row.id)}}
+          onRowClick={(row) => { handleViewDetail(row.id) }}
         />
       </div>
     </div>

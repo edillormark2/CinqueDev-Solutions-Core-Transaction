@@ -12,10 +12,7 @@ import { FaPesoSign } from "react-icons/fa6";
 
 const Product = () => {
   const navigate = useNavigate();
-  const [productSalesData, setRroductSalesData] = useState([]);
-  useEffect(() => {
-    setRroductSalesData(generateFakeProductSales(256));
-  }, []);
+  const [productSalesData, setRroductSalesData] = useState(generateFakeProductSales(256));;
 
   const handleViewDetail = (id) => {
     const sales = productSalesData.find(item => item.id === id);

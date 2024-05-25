@@ -15,11 +15,8 @@ import { GoGoal } from "react-icons/go";
 import { MdDoneOutline } from "react-icons/md";
 
 const Consultation = () => {
-  const [consultationData, setConsultationData] = useState([]);
+  const [consultationData, setConsultationData] = useState(generateFakeConsultations(145));
   const [openAssignModal, setOpenAssignModal] = useState(false);
-  useEffect(() => {
-    setConsultationData(generateFakeConsultations(145));
-  }, []);
   const [openReplyModal, setOpenReplyModal] = useState(false);
   const [email, setEmail] = useState("empty");
 
