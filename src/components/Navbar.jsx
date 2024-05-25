@@ -7,6 +7,7 @@ import { Unstable_Popup as BasePopup } from "@mui/base/Unstable_Popup";
 import profile from "../assets/mepic.jpg";
 import UserProfilePopup from "./UserProfilePopup";
 import { IoMdNotificationsOutline } from "react-icons/io";
+import NotificationsPopup from "./NotificationsPopup";
 
 const NavButton = ({ customFunc, icon, color, dotColor }) =>
   <button
@@ -25,9 +26,10 @@ const NavButton = ({ customFunc, icon, color, dotColor }) =>
 const Navbar = () => {
   const [menuClicked, setMenuClicked] = useState("");
   const [screenSize, setScreenSize] = useState(window.innerWidth);
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isUserProfilePopupOpen, setIsUserProfilePopupOpen] = useState(false);
+  const [isNotificationPopupOpen, setIsNotificationPopupOpen] = useState(false);
   const [anchor, setAnchor] = useState(null);
-  const [placement, setPlacement] = React.useState("bottom-end");
+  const [placement, setPlacement] = useState("bottom-end");
   const [userData, setUserData] = useState({});
   const { profilePicture, name } = userData;
 
@@ -62,7 +64,8 @@ const Navbar = () => {
           !anchor.contains(event.target) &&
           !event.target.closest(".action-popup")
         ) {
-          setIsPopupOpen(false);
+          setIsUserProfilePopupOpen(false);
+          setIsNotificationPopupOpen(false);
         }
       };
 
@@ -75,17 +78,23 @@ const Navbar = () => {
     [anchor]
   );
 
-  const handleClick = event => {
-    setIsPopupOpen(prev => !prev);
+  const handleUserProfileClick = event => {
+    setIsUserProfilePopupOpen(prev => !prev);
+    setAnchor(event.currentTarget);
+  };
+
+  const handleNotificationClick = event => {
+    setIsNotificationPopupOpen(prev => !prev);
     setAnchor(event.currentTarget);
   };
 
   const handleClose = () => {
-    setIsPopupOpen(false);
+    setIsUserProfilePopupOpen(false);
+    setIsNotificationPopupOpen(false);
   };
 
   return (
-    <div className="flex justify-between p-1 relative bg-white   drop-shadow-xl rounded-lg px-1 md:px-8">
+    <div className="flex justify-between p-1 relative bg-white drop-shadow-xl rounded-lg px-1 md:px-8">
       <NavButton
         title="Menu"
         customFunc={handleActiveMenu}
@@ -100,7 +109,10 @@ const Navbar = () => {
           placement="bottom"
           TransitionComponent={Fade}
         >
-          <div className="relative self-center cursor-pointer hover:bg-gray-100 p-2 rounded-full">
+          <div
+            className="relative self-center cursor-pointer hover:bg-gray-100 p-2 rounded-full"
+            onClick={handleNotificationClick}
+          >
             <IoMdNotificationsOutline size={26} className="text-gray-700" />
             <div className="bg-red-500 text-white px-1.5 py-0.5 text-xs rounded-full absolute top-1 right-0">
               4
@@ -109,7 +121,7 @@ const Navbar = () => {
         </Tooltip>
         <div className="flex drop-shadow-sm">
           <div
-            onClick={event => handleClick(event)}
+            onClick={handleUserProfileClick}
             className="flex items-center gap-4 cursor-pointer p-2 rounded-full hover:bg-gray-100"
           >
             <img
@@ -119,16 +131,28 @@ const Navbar = () => {
             />
           </div>
         </div>
-        {isPopupOpen &&
+        {isUserProfilePopupOpen &&
           <BasePopup
             id={id}
-            open={isPopupOpen}
+            open={isUserProfilePopupOpen}
             anchor={anchor}
             placement={placement}
             offset={4}
             onClose={handleClose}
           >
             <UserProfilePopup />
+            <div className="action-popup" />
+          </BasePopup>}
+        {isNotificationPopupOpen &&
+          <BasePopup
+            id={id}
+            open={isNotificationPopupOpen}
+            anchor={anchor}
+            placement={placement}
+            offset={4}
+            onClose={handleClose}
+          >
+            <NotificationsPopup />
             <div className="action-popup" />
           </BasePopup>}
       </div>
