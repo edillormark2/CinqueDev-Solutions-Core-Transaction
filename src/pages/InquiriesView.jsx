@@ -7,6 +7,7 @@ import { developerTeams } from "../data/employee";
 import Message from "../components/modals/Message";
 import { useNavigate } from "react-router-dom";
 import Breadcrumbs from "../components/Breadcrumbs.jsx";
+import { inquiryStatuses } from "../data/inquiries.js";
 
 const InquiriesView = () => {
   const location = useLocation();
@@ -37,7 +38,7 @@ const InquiriesView = () => {
       <Breadcrumbs links={breadcrumbLinks} />
       <div className="mt-4 p-4 shadow-md bg-white rounded-lg">
         <div className="mb-4 flex items-center">
-          <StatusChip text={data.status} />
+          <StatusChip text={data.status} data={inquiryStatuses} />
         </div>
         <div className="mb-4">
           <div className="flex justify-between">
@@ -77,7 +78,7 @@ const InquiriesView = () => {
               : <p>{data.team}</p>
           }
         </div>
-        <Button sx={{ backgroundColor: 'navy' }} onClick={() => navigate(`/inquiries/message/${data.id}`)}>
+        <Button sx={{ backgroundColor: 'navy' }} onClick={() => navigate(`/message/${'Inquiries'}`)}>
           <MdOutlineMailOutline size={24} />
         </Button>
       </div>

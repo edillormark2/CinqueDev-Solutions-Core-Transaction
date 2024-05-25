@@ -1,5 +1,5 @@
-import { React, useState, useEffect } from "react";
-import { generateFakeInquiries, getStatusCount } from "../data/inquiries";
+import { React, useState } from "react";
+import { generateFakeInquiries, getStatusCount, inquiryStatuses } from "../data/inquiries";
 import StatusChip from "../components/StatusChip";
 import { useNavigate } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
@@ -12,10 +12,7 @@ import { MdAccessTime } from "react-icons/md";
 
 const Inquiries = () => {
   const navigate = useNavigate();
-  const [inquiriesData, setInquiriesData] = useState([]);
-  useEffect(() => {
-    setInquiriesData(generateFakeInquiries(43));
-  }, []);
+  const [inquiriesData, setInquiriesData] = useState(generateFakeInquiries(43));
 
   const handleViewDetail = (id) => {
     const inquiry = inquiriesData.find(item => item.id === id);
@@ -32,7 +29,7 @@ const Inquiries = () => {
     {
       field: "name",
       headerName: "Name",
-      width: 250,
+      minWidth: 250,
       renderCell: (params) => (
         <div className="flex flex-col pb-4">
           <p>
@@ -47,30 +44,26 @@ const Inquiries = () => {
     {
       field: "country",
       headerName: "Country",
-      flex: 1,
       minWidth: 200,
     },
     {
       field: "budget",
       headerName: "Budget",
-      flex: 1,
       minWidth: 175,
     },
     {
       field: "service",
       headerName: "Service",
-      flex: 1,
       minWidth: 250,
     },
     {
       field: "status",
       headerName: "Status",
       headerAlign: 'center',
-      flex: 1,
-      minWidth: 150,
+      minWidth: 175,
       renderCell: (params) => (
         <div className="flex justify-center items-center h-full">
-          <StatusChip text={params.row.status} />
+          <StatusChip text={params.row.status} data={inquiryStatuses} />
         </div>
       )
     },
@@ -130,7 +123,7 @@ const Inquiries = () => {
         </div>
       </div>
 
-      <div className="my-10">
+      <div className="bg-white p-4 rounded-lg my-10">
         <DataGrid
           sx={{
             [`& .${gridClasses.cell}:focus, & .${gridClasses.cell}:focus-within`]: {
@@ -149,7 +142,7 @@ const Inquiries = () => {
           getRowHeight={() => "auto"}
           pageSizeOptions={[10, 20, 50, 100]}
           getRowId={row => row.id}
-          onRowClick={(row) => {handleViewDetail(row.id)}}
+          onRowClick={(row) => { handleViewDetail(row.id) }}
         />
       </div>
     </div>

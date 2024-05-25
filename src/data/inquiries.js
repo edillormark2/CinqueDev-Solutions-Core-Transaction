@@ -174,27 +174,14 @@ export const inquiriesDummyData = [
 ]
 
 export const inquiryStatuses = [
-    { status: 'New', color: '#007bff' },
-    { status: 'In Progress', color: '#fd7e14' },
-    { status: 'Pending Response', color: '#ffc107' },
-    { status: 'Follow-Up Required', color: '#17a2b8' },
-    { status: 'Quoted', color: '#6f42c1' },
-    { status: 'Accepted', color: '#28a745' },
-    { status: 'Rejected', color: '#dc3545' },
-    { status: 'Completed', color: '#218838' },
-    { status: 'Cancelled', color: '#6c757d' },
-    { status: 'Closed', color: '#343a40' }
-];
-
-export const inquiryStatusesPastel = [
-    { status: 'New', color: '#a2cffe' },
-    { status: 'In Progress', color: '#ffcc99' },
-    { status: 'Pending Response', color: '#ffecb3' },
-    { status: 'Follow-Up Required', color: '#b2ebf2' },
-    { status: 'Quoted', color: '#d4b0ff' },
-    { status: 'Accepted', color: '#c8e6c9' },
-    { status: 'Rejected', color: '#ffb3b3' },
-    { status: 'Completed', color: '#a5d6a7' },
-    { status: 'Cancelled', color: '#dcdcdc' },
-    { status: 'Closed', color: '#c0c0c0' }
+    { status: 'New', color: '#007bff', pastelColor: '#a2cffe' },
+    { status: 'In Progress', color: '#fd7e14', pastelColor: '#ffcc99' },
+    { status: 'Pending Response', color: '#ffc107', pastelColor: '#ffecb3' },
+    { status: 'Follow-Up Required', color: '#17a2b8', pastelColor: '#b2ebf2' },
+    { status: 'Quoted', color: '#6f42c1', pastelColor: '#d4b0ff' },
+    { status: 'Accepted', color: '#28a745', pastelColor: '#c8e6c9' },
+    { status: 'Rejected', color: '#dc3545', pastelColor: '#ffb3b3' },
+    { status: 'Completed', color: '#218838', pastelColor: '#a5d6a7' },
+    { status: 'Cancelled', color: '#6c757d', pastelColor: '#dcdcdc' },
+    { status: 'Closed', color: '#343a40', pastelColor: '#c0c0c0' }
 ];
