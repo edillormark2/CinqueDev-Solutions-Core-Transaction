@@ -1,5 +1,5 @@
-import { React, useState, useEffect } from "react";
-import { generateFakeInquiries, getStatusCount } from "../data/inquiries";
+import { React, useState } from "react";
+import { generateFakeInquiries, getStatusCount, inquiryStatuses } from "../data/inquiries";
 import StatusChip from "../components/StatusChip";
 import { useNavigate } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
@@ -29,7 +29,7 @@ const Inquiries = () => {
     {
       field: "name",
       headerName: "Name",
-      width: 250,
+      minWidth: 250,
       renderCell: (params) => (
         <div className="flex flex-col pb-4">
           <p>
@@ -44,30 +44,26 @@ const Inquiries = () => {
     {
       field: "country",
       headerName: "Country",
-      flex: 1,
       minWidth: 200,
     },
     {
       field: "budget",
       headerName: "Budget",
-      flex: 1,
       minWidth: 175,
     },
     {
       field: "service",
       headerName: "Service",
-      flex: 1,
       minWidth: 250,
     },
     {
       field: "status",
       headerName: "Status",
       headerAlign: 'center',
-      flex: 1,
-      minWidth: 150,
+      minWidth: 175,
       renderCell: (params) => (
         <div className="flex justify-center items-center h-full">
-          <StatusChip text={params.row.status} />
+          <StatusChip text={params.row.status} data={inquiryStatuses} />
         </div>
       )
     },
@@ -75,10 +71,8 @@ const Inquiries = () => {
 
   return (
     <div className="mx-4 md:mx-12 my-20 md:my-8">
-      <div className="my-4">
-        <div className="flex flex-col md:flex-row justify-between">
-          <div className="text-3xl font-semibold my-4">Inquiries</div>
-        </div>
+      <div className="flex flex-col md:flex-row justify-between">
+        <div className="text-3xl font-semibold my-4">Inquiries</div>
       </div>
       <Breadcrumbs links={breadcrumbLinks} />
 
@@ -129,7 +123,7 @@ const Inquiries = () => {
         </div>
       </div>
 
-      <div className="my-10">
+      <div className="bg-white p-4 rounded-lg my-10">
         <DataGrid
           sx={{
             [`& .${gridClasses.cell}:focus, & .${gridClasses.cell}:focus-within`]: {

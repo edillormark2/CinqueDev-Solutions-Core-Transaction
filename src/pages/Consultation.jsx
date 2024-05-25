@@ -1,25 +1,30 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { MdOutlinePersonAdd } from "react-icons/md";
 import { DataGrid } from "@mui/x-data-grid";
 import { gridClasses } from "@mui/x-data-grid";
 import { Tooltip } from "@mui/material";
 import Fade from "@mui/material/Fade";
+import StatusChip from "../components/StatusChip.jsx";
+import {getStatusCount} from "../data/inquiries.js";
+import { useNavigate } from "react-router-dom";
 
 import Assign from "../components/modals/Assign";
 import Reply from "../components/modals/Message";
 import Breadcrumbs from "../components/Breadcrumbs.jsx";
-import { generateFakeConsultations } from "../data/consultation";
+import { generateFakeConsultations, consultationStatuses } from "../data/consultation";
 
 import { GoGoal } from "react-icons/go";
 import { MdDoneOutline } from "react-icons/md";
+import { MdAccessTime } from "react-icons/md";
 
 const Consultation = () => {
   const [consultationData, setConsultationData] = useState(generateFakeConsultations(145));
   const [openAssignModal, setOpenAssignModal] = useState(false);
   const [openReplyModal, setOpenReplyModal] = useState(false);
   const [email, setEmail] = useState("empty");
-
+  const navigate = useNavigate();
+  
   const breadcrumbLinks = [
     { to: "/dashboard", label: "Home" },
     { to: "", label: "Consultations" }
@@ -29,7 +34,6 @@ const Consultation = () => {
     {
       field: "date",
       headerName: "Date",
-      flex: 1,
       minWidth: 150,
       renderCell: (params) => (
         <div className="flex flex-col">
@@ -45,7 +49,7 @@ const Consultation = () => {
     {
       field: "name",
       headerName: "Name",
-      width: 250,
+      minWidth: 250,
       renderCell: (params) => (
         <div className="flex flex-col">
           <p>
@@ -63,7 +67,7 @@ const Consultation = () => {
     {
       field: "message",
       headerName: "Message",
-      width: 350,
+      minWidth: 350,
       renderCell: (params) => (
         <p>{`Hi I am ${params.row.name} ${params.row.message}`}</p>
       )
@@ -71,8 +75,17 @@ const Consultation = () => {
     {
       field: "assignees",
       headerName: "Assignees",
-      flex: 1,
       minWidth: 150,
+    },
+    {
+      field: "status",
+      headerName: "Status",
+      minWidth: 100,
+      renderCell: (params) => (
+        <div className="flex justify-center items-center h-full">
+          <StatusChip text={params.row.status} data={consultationStatuses} />
+        </div>
+      )
     },
     {
       field: "action",
@@ -80,7 +93,6 @@ const Consultation = () => {
       headerAlign: 'center',
       align: "center",
       sortable: false,
-      width: 150,
       renderCell: params =>
         <div className="flex justify-center gap-2">
           <Tooltip
@@ -103,7 +115,7 @@ const Consultation = () => {
             TransitionComponent={Fade}
           >
             <div
-              onClick={() => { setOpenReplyModal(true); setEmail(params.email); }}
+              onClick={() => navigate(`/message/${'Consultation'}`)}
               className="p-2 my-2 rounded-lg text-black cursor-pointer border"
             >
               <MdOutlineMailOutline size={18} className="text-gray-600" />
@@ -138,14 +150,25 @@ const Consultation = () => {
           </div>
           <div>
             <p className="text-2xl font-semibold">
-              28
+            {getStatusCount(consultationData, "Completed")}
             </p>
             <p className=" text-gray-500">Completed</p>
           </div>
         </div>
+        <div className="flex gap-4 bg-white p-4 rounded-xl w-full md:w-80">
+          <div className="bg-blue-100 px-3 py-1 rounded-xl text-blue-500 flex justify-center ">
+            <MdAccessTime size={28} className="self-center items-center" />
+          </div>
+          <div>
+            <p className="text-2xl font-semibold">
+            {getStatusCount(consultationData, "Pending")}
+            </p>
+            <p className=" text-gray-500">Pending</p>
+          </div>
+        </div>
       </div>
 
-      <div className="my-10">
+      <div className="bg-white p-4 rounded-lg my-10">
         <DataGrid
           sx={{
             [`& .${gridClasses.cell}:focus, & .${gridClasses.cell}:focus-within`]: {

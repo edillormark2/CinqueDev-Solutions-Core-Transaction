@@ -44,7 +44,7 @@ const Product = () => {
     {
       field: "price",
       headerName: "Price",
-      width: 100,
+      minWidth: 100,
       renderCell: (params) => (
         <p>
           {`₱ ${params.row.price.toLocaleString()}`}
@@ -54,12 +54,12 @@ const Product = () => {
     {
       field: "id",
       headerName: "Transaction ID",
-      width: 125,
+      minWidth: 125,
     },
     {
       field: "date",
       headerName: "Date",
-      width: 175,
+      minWidth: 175,
       renderCell: (params) => (
         <div className="flex flex-col pb-4">
           <p>
@@ -74,7 +74,7 @@ const Product = () => {
     {
       field: "name",
       headerName: "Name",
-      width: 250,
+      minWidth: 250,
       renderCell: (params) => (
         <div className="flex flex-col pb-4">
           <p>
@@ -89,7 +89,6 @@ const Product = () => {
     {
       field: "company",
       headerName: "Company / Country",
-      flex: 1,
       minWidth: 225,
       renderCell: (params) => (
         <div className="flex flex-col pb-4">
@@ -105,7 +104,6 @@ const Product = () => {
     {
       field: "product",
       headerName: "Product",
-      flex: 1,
       minWidth: 200,
     },
   ];
@@ -142,7 +140,7 @@ const Product = () => {
         </div>
       </div>
 
-      <div className="my-10">
+      <div className="bg-white p-4 rounded-lg my-10">
         <DataGrid
           sx={{
             [`& .${gridClasses.cell}:focus, & .${gridClasses.cell}:focus-within`]: {

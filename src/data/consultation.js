@@ -1,6 +1,27 @@
 import { randBetweenDate, randFullName, randEmail, randPhoneNumber, randText } from '@ngneat/falso';
 import dayjs from 'dayjs';
 
+export const consultationStatuses = [
+    { status: "Pending", color: '#6f42c1', pastelColor: '#d4b0ff' },
+    { status: "In Progress", color: '#007bff', pastelColor: '#a2cffe' },
+    { status: "Completed", color: '#28a745', pastelColor: '#c8e6c9' },
+    { status: "On Hold", color: '#ffc107', pastelColor: '#ffecb3' },
+    { status: "Cancelled", color: '#dc3545', pastelColor: '#ffb3b3' },
+];
+
+function randConsultationStatus() {
+    const consultationStatuses = [
+        "Pending",
+        "In Progress",
+        "Completed",
+        "On Hold",
+        "Cancelled"
+    ];
+
+    const randomIndex = Math.floor(Math.random() * consultationStatuses.length);
+    return consultationStatuses[randomIndex];
+}
+
 function randMeetingRequest() {
     const meetingRequests = [
         "Could we arrange a meeting to explore your software solutions?",
@@ -13,7 +34,7 @@ function randMeetingRequest() {
         "I'm seeking a consultation to understand how your software can address our company's needs.",
         "Can we arrange a meeting to discuss the software solutions you provide?",
         "I want to schedule a consultation to explore how your software can support our company's goals."
-      ];
+    ];
 
     const randomIndex = Math.floor(Math.random() * meetingRequests.length);
     return meetingRequests[randomIndex];
@@ -31,7 +52,8 @@ export function generateFakeConsultations(count) {
         email: randEmail(),
         phone: randPhoneNumber(),
         message: randMeetingRequest(),
-        assignees: randFullName({ withAccents: false }), // Random assignee
+        assignees: randFullName({ withAccents: false }),
+        status: randConsultationStatus(),
     }));
 }
 
