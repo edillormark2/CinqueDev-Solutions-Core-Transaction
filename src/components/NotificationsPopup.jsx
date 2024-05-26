@@ -9,7 +9,7 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 
 const NotificationsPopup = ({ closePopup }) => {
   return (
-    <div className="bg-white rounded-xl drop-shadow-xl border mt-3 border-gray-300 w-full max-w-96 relative">
+    <div className="bg-white rounded-xl drop-shadow-xl border mt-3 border-gray-300 w-full lg:w-96 relative">
       <div className="flex justify-between px-4 py-2">
         <p className="font-semibold">Notifications</p>
         <p className="flex gap-1 text-gray-500 text-sm cursor-pointer hover:text-primary self-center">

@@ -113,7 +113,7 @@ const Navbar = () => {
             className="relative self-center cursor-pointer hover:bg-gray-100 p-2 rounded-full"
             onClick={handleNotificationClick}
           >
-            <IoMdNotificationsOutline size={26} className="text-gray-700" />
+            <IoMdNotificationsOutline size={26} className="text-gray-500" />
             <div className="bg-red-500 text-white px-1.5 py-0.5 text-xs rounded-full absolute top-1 right-0">
               4
             </div>

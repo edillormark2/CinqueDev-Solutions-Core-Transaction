@@ -23,7 +23,7 @@ const UserProfilePopup = ({ closePopup }) => {
         </div>
       </div>
       <div className="text-center mb-4">
-        <p className="text-base font-semibold">Lelouch Lamperouge</p>
+        <p className="text-base font-semibold">Mark Daniel Edillor</p>
         <p className="uppercase text-sm  text-gray-500">Admin</p>
       </div>
 

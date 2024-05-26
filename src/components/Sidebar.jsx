@@ -13,20 +13,22 @@ const Sidebar = () => {
     screenSize
   } = useStateContext();
   const [activeNavLink, setActiveNavLink] = useState("");
-  const [activeParentMenu, setActiveParentMenu] = useState("");
   const location = useLocation();
 
   useEffect(
     () => {
       const pathname = location.pathname;
-      links.forEach(category => {
-        category.links.forEach(link => {
-          if (link.url === pathname) {
-            setActiveParentMenu(link.url);
-            setActiveNavLink(link.url);
-          }
+      if (pathname === "/" || pathname === "/dashboard") {
+        setActiveNavLink("/dashboard");
+      } else {
+        links.forEach(category => {
+          category.links.forEach(link => {
+            if (link.url === pathname) {
+              setActiveNavLink(link.url);
+            }
+          });
         });
-      });
+      }
     },
     [location]
   );
@@ -39,7 +41,6 @@ const Sidebar = () => {
 
   const handleLinkClick = linkUrl => {
     setActiveNavLink(linkUrl);
-    setActiveParentMenu(linkUrl);
     handleCloseSideBar();
   };
 
@@ -81,10 +82,11 @@ const Sidebar = () => {
                 key={link.name}
                 onClick={() => handleLinkClick(link.url)}
                 style={({ isActive }) => ({
-                  backgroundColor: isActive ? currentColor : ""
+                  backgroundColor:
+                    isActive || activeNavLink === link.url ? currentColor : ""
                 })}
                 className={({ isActive }) =>
-                  isActive || activeParentMenu === link.url
+                  isActive || activeNavLink === link.url
                     ? activeLink
                     : normalLink}
               >

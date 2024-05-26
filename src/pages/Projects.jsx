@@ -77,6 +77,11 @@ const Projects = () => {
   const [openCreatePopup, setOpenCreatePopup] = useState(false);
   const navigate = useNavigate();
 
+  const handleViewProjectDetails = id => {
+    navigate(`/projects/project-details/${id}`);
+    window.scrollTo({ top: 0 });
+  };
+
   // Calculate totals
   const totalProjects = projectsData.length;
   const completedProjects = projectsData.filter(
@@ -138,8 +143,7 @@ const Projects = () => {
             TransitionComponent={Fade}
           >
             <div
-              onClick={() =>
-                navigate(`/projects/project-details/${params.row.id}`)}
+              onClick={() => handleViewProjectDetails(params.row.id)}
               className="p-2 my-2 rounded-lg text-black cursor-pointer border"
             >
               <MdOutlineInfo size={18} className="text-gray-600" />
