@@ -4,7 +4,7 @@ import {
   EditorState,
   RichUtils,
   convertToRaw,
-  convertFromRaw,
+  convertFromRaw
 } from "draft-js";
 import Toolbar from "./Toolbar";
 
@@ -14,16 +14,13 @@ const DraftEditor = () => {
       convertFromRaw({
         blocks: [
           {
-            text: `Hello,`,
+            text: `Hello,`
           },
           {
-            text: "\n\n",
-          },
-          {
-            text: "Cinquedev Team",
-          },
+            text: "Cinquedev Team"
+          }
         ],
-        entityMap: {},
+        entityMap: {}
       })
     )
   );
@@ -37,7 +34,7 @@ const DraftEditor = () => {
     editor.current.focus();
   };
 
-  const handleKeyCommand = (command) => {
+  const handleKeyCommand = command => {
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
       setEditorState(newState);
@@ -46,22 +43,21 @@ const DraftEditor = () => {
     return false;
   };
 
-  // FOR INLINE STYLES
   const styleMap = {
     CODE: {
       backgroundColor: "rgba(0, 0, 0, 0.05)",
       fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
       fontSize: 16,
-      padding: 2,
+      padding: 2
     },
     HIGHLIGHT: {
-      backgroundColor: "#F7A5F7",
+      backgroundColor: "#F7A5F7"
     },
     UPPERCASE: {
-      textTransform: "uppercase",
+      textTransform: "uppercase"
     },
     LOWERCASE: {
-      textTransform: "lowercase",
+      textTransform: "lowercase"
     },
     CODEBLOCK: {
       fontFamily: '"fira-code", "monospace"',
@@ -70,20 +66,19 @@ const DraftEditor = () => {
       fontStyle: "italic",
       lineHeight: 1.5,
       padding: "0.3rem 0.5rem",
-      borderRadius: " 0.2rem",
+      borderRadius: " 0.2rem"
     },
     SUPERSCRIPT: {
       verticalAlign: "super",
-      fontSize: "80%",
+      fontSize: "80%"
     },
     SUBSCRIPT: {
       verticalAlign: "sub",
-      fontSize: "80%",
-    },
+      fontSize: "80%"
+    }
   };
 
-  // FOR BLOCK LEVEL STYLES(Returns CSS Class From DraftEditor.css)
-  const myBlockStyleFn = (contentBlock) => {
+  const myBlockStyleFn = contentBlock => {
     const type = contentBlock.getType();
     switch (type) {
       case "blockQuote":
@@ -104,14 +99,17 @@ const DraftEditor = () => {
   return (
     <div className="editor-wrapper" onClick={focusEditor}>
       <Toolbar editorState={editorState} setEditorState={setEditorState} />
-      <div className="editor-container">
+      <div
+        className="editor-container"
+        style={{ height: "250px", overflowY: "auto" }}
+      >
         <Editor
           ref={editor}
           handleKeyCommand={handleKeyCommand}
           editorState={editorState}
           customStyleMap={styleMap}
           blockStyleFn={myBlockStyleFn}
-          onChange={(editorState) => {
+          onChange={editorState => {
             const contentState = editorState.getCurrentContent();
             console.log(convertToRaw(contentState));
             setEditorState(editorState);

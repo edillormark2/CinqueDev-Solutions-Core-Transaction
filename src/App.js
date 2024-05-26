@@ -20,6 +20,7 @@ import Projects from "./pages/Projects";
 import ProjectDetails from "./pages/ProjectDetails";
 import OngoingSupport from "./pages/OngoingSupport";
 import SupportDetails from "./pages/SupportDetails";
+import ConsultationDetails from "./pages/ConsultationDetails";
 
 const App = () => {
   const { activeMenu } = useStateContext();
@@ -51,6 +52,10 @@ const App = () => {
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/consultation" element={<Consultation />} />
+                  <Route
+                    path="/consultation/consultation-details/:id"
+                    element={<ConsultationDetails />}
+                  />
                   <Route path="/contracts" element={<Contracts />} />
                   <Route
                     path="/contracts/contract-form/:id"

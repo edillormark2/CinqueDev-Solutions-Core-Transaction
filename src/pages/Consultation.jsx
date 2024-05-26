@@ -1,129 +1,109 @@
-import { React, useState } from "react";
-import { MdOutlineMailOutline } from "react-icons/md";
-import { MdOutlinePersonAdd } from "react-icons/md";
-import { DataGrid } from "@mui/x-data-grid";
-import { gridClasses } from "@mui/x-data-grid";
-import { Tooltip } from "@mui/material";
-import Fade from "@mui/material/Fade";
-import StatusChip from "../components/StatusChip.jsx";
-import {getStatusCount} from "../data/inquiries.js";
+import React, { useState } from "react";
+import { MdOutlineArrowBackIos, MdArrowForwardIos } from "react-icons/md";
+import { Divider } from "@mui/material";
+import Breadcrumbs from "../components/Breadcrumbs.jsx";
+import { consultationDummyData } from "../data/consultation";
+import { IoIosStarOutline, IoMdStar, IoMdSearch } from "react-icons/io";
+import dayjs from "dayjs";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 
-import Assign from "../components/modals/Assign";
-import Reply from "../components/modals/Message";
-import Breadcrumbs from "../components/Breadcrumbs.jsx";
-import { generateFakeConsultations, consultationStatuses } from "../data/consultation";
-
-import { GoGoal } from "react-icons/go";
-import { MdDoneOutline } from "react-icons/md";
-import { MdAccessTime } from "react-icons/md";
-
 const Consultation = () => {
-  const [consultationData, setConsultationData] = useState(generateFakeConsultations(145));
-  const [openAssignModal, setOpenAssignModal] = useState(false);
-  const [openReplyModal, setOpenReplyModal] = useState(false);
-  const [email, setEmail] = useState("empty");
   const navigate = useNavigate();
-  
+  const [consultationData, setConsultationData] = useState(
+    consultationDummyData
+  );
+  const [currentPage, setCurrentPage] = useState(0);
+  const [filter, setFilter] = useState("Inbox");
+  const [searchInput, setSearchInput] = useState("");
+  const [selectedConsultations, setSelectedConsultations] = useState([]);
+  const itemsPerPage = 10;
+  const totalPages = Math.ceil(consultationData.length / itemsPerPage);
+
+  const handleNextPage = () => {
+    setCurrentPage(prevPage => Math.min(prevPage + 1, totalPages - 1));
+  };
+
+  const handlePreviousPage = () => {
+    setCurrentPage(prevPage => Math.max(prevPage - 1, 0));
+  };
+
+  // Filter consultations based on the selected filter and search input
+  const filteredConsultations = consultationData.filter(consultation => {
+    const searchRegex = new RegExp(searchInput, "i");
+    if (filter === "Unread") {
+      return (
+        consultation.messageStatus === "Unread" &&
+        consultation.name.match(searchRegex)
+      );
+    } else if (filter === "Starred") {
+      return (
+        consultation.starStatus === "Starred" &&
+        consultation.name.match(searchRegex)
+      );
+    } else {
+      return consultation.name.match(searchRegex);
+    }
+  });
+
+  const displayedConsultations = filteredConsultations.slice(
+    currentPage * itemsPerPage,
+    (currentPage + 1) * itemsPerPage
+  );
+
   const breadcrumbLinks = [
     { to: "/dashboard", label: "Home" },
     { to: "", label: "Consultations" }
   ];
 
-  const columns = [
-    {
-      field: "date",
-      headerName: "Date",
-      minWidth: 150,
-      renderCell: (params) => (
-        <div className="flex flex-col">
-          <p>
-            {params.row.date}
-          </p>
-          <p className=" text-gray-500">
-            {params.row.time}
-          </p>
-        </div>
-      )
-    },
-    {
-      field: "name",
-      headerName: "Name",
-      minWidth: 250,
-      renderCell: (params) => (
-        <div className="flex flex-col">
-          <p>
-            {params.row.name}
-          </p>
-          <p className=" text-gray-500 overflow-hidden text-ellipsis">
-            {params.row.email}
-          </p>
-          <p className=" text-gray-500 overflow-hidden text-ellipsis">
-            {params.row.phone}
-          </p>
-        </div>
-      )
-    },
-    {
-      field: "message",
-      headerName: "Message",
-      minWidth: 350,
-      renderCell: (params) => (
-        <p>{`Hi I am ${params.row.name} ${params.row.message}`}</p>
-      )
-    },
-    {
-      field: "assignees",
-      headerName: "Assignees",
-      minWidth: 150,
-    },
-    {
-      field: "status",
-      headerName: "Status",
-      minWidth: 100,
-      renderCell: (params) => (
-        <div className="flex justify-center items-center h-full">
-          <StatusChip text={params.row.status} data={consultationStatuses} />
-        </div>
-      )
-    },
-    {
-      field: "action",
-      headerName: "Action",
-      headerAlign: 'center',
-      align: "center",
-      sortable: false,
-      renderCell: params =>
-        <div className="flex justify-center gap-2">
-          <Tooltip
-            arrow
-            title="Assign"
-            placement="left"
-            TransitionComponent={Fade}
-          >
-            <div
-              onClick={() => setOpenAssignModal(true)}
-              className="p-2 my-2 rounded-lg text-black cursor-pointer border"
-            >
-              <MdOutlinePersonAdd size={18} className="text-gray-600" />
-            </div>
-          </Tooltip>
-          <Tooltip
-            arrow
-            title="Message"
-            placement="right"
-            TransitionComponent={Fade}
-          >
-            <div
-              onClick={() => navigate(`/message/${'Consultation'}`)}
-              className="p-2 my-2 rounded-lg text-black cursor-pointer border"
-            >
-              <MdOutlineMailOutline size={18} className="text-gray-600" />
-            </div>
-          </Tooltip>
-        </div>
+  // Calculate counts
+  const inboxCount = consultationData.length;
+  const unreadCount = consultationData.filter(
+    consultation => consultation.messageStatus === "Unread"
+  ).length;
+  const starredCount = consultationData.filter(
+    consultation => consultation.starStatus === "Starred"
+  ).length;
+
+  // Handle star status toggle
+  const toggleStarStatus = index => {
+    const newConsultationData = [...consultationData];
+    newConsultationData[index].starStatus =
+      newConsultationData[index].starStatus === "Starred"
+        ? "Unstarred"
+        : "Starred";
+    setConsultationData(newConsultationData);
+  };
+
+  // Handle search input change
+  const handleSearchInputChange = event => {
+    setSearchInput(event.target.value);
+  };
+
+  const selectAll = () => {
+    if (selectedConsultations.length === displayedConsultations.length) {
+      setSelectedConsultations([]);
+    } else {
+      setSelectedConsultations(
+        displayedConsultations.map(
+          (_, index) => currentPage * itemsPerPage + index
+        )
+      );
     }
-  ];
+  };
+
+  const selectedData = index => {
+    if (selectedConsultations.includes(index)) {
+      setSelectedConsultations(selectedConsultations.filter(i => i !== index));
+    } else {
+      setSelectedConsultations([...selectedConsultations, index]);
+    }
+  };
+
+  const goToConsultationDetails = id => {
+    navigate(`/consultation/consultation-details/${id}`);
+    window.scrollTo({ top: 0 });
+  };
 
   return (
     <div className="mx-4 md:mx-12 my-20 md:my-8">
@@ -132,76 +112,177 @@ const Consultation = () => {
       </div>
       <Breadcrumbs links={breadcrumbLinks} />
 
-      <div className="mt-8 flex flex-wrap lg:flex-nowrap gap-4">
-        <div className="flex gap-4 bg-blue-500 p-4 rounded-xl w-full md:w-80 shadow-2xl shadow-primary">
-          <div className="bg-white px-3 py-1 rounded-xl text-blue-500 flex justify-center ">
-            <GoGoal size={28} className="self-center items-center" />
-          </div>
-          <div>
-            <p className="text-2xl font-semibold text-white">
-              {consultationData.length}
+      <div className="flex flex-col md:flex-row justify-between mt-10">
+        <div className="flex gap-4 component-transition">
+          <div
+            className={`flex gap-2 rounded-lg p-3 cursor-pointer hover:opacity-70 select-none ${filter ===
+            "Inbox"
+              ? "bg-blue-100 text-blue-500"
+              : "bg-white"}`}
+            onClick={() => setFilter("Inbox")}
+          >
+            <p
+              className={`py-1 px-2 text-sm rounded-md ${filter === "Inbox"
+                ? "bg-blue-600 text-white"
+                : "bg-gray-200 text-gray-500"}`}
+            >
+              {inboxCount}
             </p>
-            <p className="  text-white">Total</p>
+            <p className="self-center font-semibold">Inbox</p>
+          </div>
+          <div
+            className={`flex gap-2 rounded-lg p-3 cursor-pointer hover:opacity-70 select-none ${filter ===
+            "Unread"
+              ? "bg-blue-100 text-blue-500"
+              : "bg-white"}`}
+            onClick={() => setFilter("Unread")}
+          >
+            <p
+              className={`py-1 px-2 text-sm rounded-md ${filter === "Unread"
+                ? "bg-blue-600 text-white"
+                : "bg-gray-200 text-gray-500"}`}
+            >
+              {unreadCount}
+            </p>
+            <p className="self-center">Unread</p>
+          </div>
+          <div
+            className={`flex gap-2 rounded-lg p-3 cursor-pointer hover:opacity-70 select-none ${filter ===
+            "Starred"
+              ? "bg-blue-100 text-blue-500"
+              : "bg-white"}`}
+            onClick={() => setFilter("Starred")}
+          >
+            <p
+              className={`py-1 px-2 text-sm rounded-md ${filter === "Starred"
+                ? "bg-blue-600 text-white"
+                : "bg-gray-200 text-gray-500"}`}
+            >
+              {starredCount}
+            </p>
+            <p className="self-center">Starred</p>
           </div>
         </div>
-        <div className="flex gap-4 bg-white p-4 rounded-xl w-full md:w-80">
-          <div className="bg-blue-100 px-3 py-1 rounded-xl text-blue-500 flex justify-center ">
-            <MdDoneOutline size={28} className="self-center items-center" />
-          </div>
-          <div>
-            <p className="text-2xl font-semibold">
-            {getStatusCount(consultationData, "Completed")}
-            </p>
-            <p className=" text-gray-500">Completed</p>
-          </div>
-        </div>
-        <div className="flex gap-4 bg-white p-4 rounded-xl w-full md:w-80">
-          <div className="bg-blue-100 px-3 py-1 rounded-xl text-blue-500 flex justify-center ">
-            <MdAccessTime size={28} className="self-center items-center" />
-          </div>
-          <div>
-            <p className="text-2xl font-semibold">
-            {getStatusCount(consultationData, "Pending")}
-            </p>
-            <p className=" text-gray-500">Pending</p>
+        <div className="relative w-full md:w-60 self-center my-4 md:my-0">
+          <input
+            placeholder="Search..."
+            className="form-control w-full pl-4 py-2 rounded-xl border text-sm sm:text-base pr-8 bg-white"
+            value={searchInput}
+            onChange={handleSearchInputChange}
+          />
+          <div className="absolute inset-y-0 right-2 flex items-center pr-2 cursor-pointer text-gray-500">
+            <IoMdSearch />
           </div>
         </div>
       </div>
 
-      <div className="bg-white p-4 rounded-lg my-10">
-        <DataGrid
-          sx={{
-            [`& .${gridClasses.cell}:focus, & .${gridClasses.cell}:focus-within`]: {
-              outline: "none"
-            },
-            [`& .${gridClasses.columnHeader}:focus, & .${gridClasses.columnHeader}:focus-within`]: {
-              outline: "none"
-            }
-          }}
-          initialState={{
-            pagination: { paginationModel: { pageSize: 10 } }
-          }}
-          rows={consultationData}
-          columns={columns}
-          autoHeight={true}
-          getRowHeight={() => 'auto'}
-          pageSizeOptions={[10, 20, 50, 100]}
-          getRowId={row => row.name}
-        />
-      </div>
-
-      <div>
-        <Assign
-          title="Assign Employee"
-          openModal={openAssignModal}
-          setOpenModal={setOpenAssignModal}
-        />
-        <Reply
-          title="Reply"
-          email={email}
-          openModal={openReplyModal}
-          setOpenModal={setOpenReplyModal}
-        />
+      <div className="bg-white rounded-lg py-4 mt-6 overflow-x-auto">
+        <div className="flex justify-between mx-4 mb-4">
+          <div className="flex gap-2 self-center">
+            <input
+              type="checkbox"
+              onChange={selectAll}
+              checked={
+                selectedConsultations.length ===
+                  displayedConsultations.length &&
+                displayedConsultations.length > 0
+              }
+              className="cursor-pointer h-5 w-5 my-auto border-gray-100"
+            />
+            <div>
+              {selectedConsultations.length > 0 &&
+                <div className="flex self-center gap-2 text-gray-500 text-sm hover:text-red-500 cursor-pointer">
+                  <RiDeleteBin6Line size={17} className="self-center" />
+                  {selectedConsultations.length ===
+                  displayedConsultations.length
+                    ? <p>Delete all</p>
+                    : <p>Delete Selected</p>}
+                </div>}
+            </div>
+          </div>
+          <div className="flex gap-4">
+            <div className="self-center select-none text-sm">{`${currentPage *
+              itemsPerPage +
+              1}-${Math.min(
+              (currentPage + 1) * itemsPerPage,
+              filteredConsultations.length
+            )} of ${filteredConsultations.length}`}</div>
+            <div className="flex gap-2">
+              <div
+                className={`p-2 border rounded-lg ${currentPage === 0
+                  ? "text-gray-400 cursor-default"
+                  : "cursor-pointer hover:bg-blue-50"}`}
+                onClick={currentPage !== 0 ? handlePreviousPage : undefined}
+              >
+                <MdOutlineArrowBackIos />
+              </div>
+              <div
+                className={`p-2 border rounded-lg ${currentPage ===
+                totalPages - 1
+                  ? "text-gray-400 cursor-default"
+                  : "cursor-pointer hover:bg-blue-50"}`}
+                onClick={
+                  currentPage !== totalPages - 1 ? handleNextPage : undefined
+                }
+              >
+                <MdArrowForwardIos />
+              </div>
+            </div>
+          </div>
+        </div>
+        <Divider />
+        <div className="min-w-[900px]">
+          {displayedConsultations.map((consultation, index) =>
+            <div
+              key={index}
+              onClick={() => goToConsultationDetails(consultation.id)}
+              className="cursor-pointer hover:bg-blue-50"
+            >
+              <div className="flex flex-row py-4 px-4">
+                <div className="flex-1 max-w-[300px]">
+                  <div className="flex gap-4">
+                    <input
+                      type="checkbox"
+                      onChange={() =>
+                        selectedData(currentPage * itemsPerPage + index)}
+                      checked={selectedConsultations.includes(
+                        currentPage * itemsPerPage + index
+                      )}
+                      className="cursor-pointer h-4 w-4 my-auto border-gray-100"
+                    />
+                    {consultation.starStatus === "Starred"
+                      ? <IoMdStar
+                          size={20}
+                          className="self-center cursor-pointer text-yellow-400"
+                          onClick={() =>
+                            toggleStarStatus(
+                              currentPage * itemsPerPage + index
+                            )}
+                        />
+                      : <IoIosStarOutline
+                          size={20}
+                          className="self-center cursor-pointer text-gray-500 hover:text-black"
+                          onClick={() =>
+                            toggleStarStatus(
+                              currentPage * itemsPerPage + index
+                            )}
+                        />}
+                    <p className="font-semibold">
+                      {consultation.name}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex-1 max-w-[2000px]">
+                  {consultation.message}
+                </div>
+                <div className="flex-1 text-end max-w-[150px] text-sm font-bold text-gray-600">
+                  {dayjs(consultation.date).format("MMM DD")}
+                </div>
+              </div>
+              <Divider />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
