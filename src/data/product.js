@@ -49,12 +49,12 @@ function randCardType() {
         "Visa",
         "American Express",
         "Discover",
-        "Diners Club",
         "JCB",
-        "UnionPay",
         "Maestro",
+        /* "Diners Club",
+        "UnionPay",
         "Visa Electron",
-        "RuPay"
+        "RuPay" */
     ];
 
     const randomIndex = Math.floor(Math.random() * cardTypes.length);
