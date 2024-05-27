@@ -94,7 +94,7 @@ const Dashboard = () => {
         </div>
 
         {/* RECENT TRANSACTION */}
-        <div className="w-full lg:w-3/6 py-4 px-2 bg-white mt-4 rounded-xl h-full ">
+        <div className="w-full lg:w-3/6 py-4 px-2 bg-white mt-4 rounded-xl h-full mb-4 md:mb-0">
           <div>
             <Typography className="text-base font-semibold text-gray-700 my-2 mx-2">
               Recent Transactions

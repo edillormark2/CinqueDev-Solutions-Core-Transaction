@@ -106,14 +106,14 @@ const Consultation = () => {
   };
 
   return (
-    <div className="mx-4 md:mx-12 my-20 md:my-8">
+    <div className="mx-2 md:mx-12 my-20 md:my-8">
       <div className="flex flex-col md:flex-row justify-between">
         <div className="text-3xl font-semibold my-4">Consultations</div>
       </div>
       <Breadcrumbs links={breadcrumbLinks} />
 
       <div className="flex flex-col md:flex-row justify-between mt-10">
-        <div className="flex gap-4 component-transition">
+        <div className="flex flex-wrap gap-4 component-transition">
           <div
             className={`flex gap-2 rounded-lg p-3 cursor-pointer hover:opacity-70 select-none ${filter ===
             "Inbox"
@@ -231,12 +231,12 @@ const Consultation = () => {
           </div>
         </div>
         <Divider />
-        <div className="min-w-[900px]">
+        <div className="min-w-[900px] p-2 md:p-0">
           {displayedConsultations.map((consultation, index) =>
             <div
               key={index}
               onClick={() => goToConsultationDetails(consultation.id)}
-              className="cursor-pointer hover:bg-blue-50"
+              className="cursor-pointer hover:bg-blue-50 border md:border-none"
             >
               <div className="flex flex-row py-4 px-4">
                 <div className="flex-1 max-w-[300px]">

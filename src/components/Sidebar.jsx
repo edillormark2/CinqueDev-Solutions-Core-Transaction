@@ -56,7 +56,7 @@ const Sidebar = () => {
           type="button"
           onClick={() => setActiveMenu(!activeMenu)}
           style={{ color: currentColor }}
-          className="text-xl rounded-full p-4 hover-bg-light-gray block lg:hidden"
+          className="text-xl rounded-full p-4 bg-gray-100 block lg:hidden"
         >
           <MdOutlineCancel />
         </button>

@@ -42,7 +42,7 @@ const ConsultationDetails = () => {
   }
 
   return (
-    <div className="mx-4 md:mx-12 my-20 md:my-2">
+    <div className="mx-2 md:mx-12 my-20 md:my-2">
       <div className="w-full lg:w-4/5 mx-auto mt-4">
         <div className="flex justify-between bg-white p-3 rounded-lg mb-4">
           <Tooltip

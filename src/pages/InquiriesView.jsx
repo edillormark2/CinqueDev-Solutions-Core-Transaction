@@ -46,7 +46,7 @@ const InquiriesView = () => {
   }
 
   return (
-    <div className="mx-4 md:mx-12 my-20 md:my-2">
+    <div className="mx-2 md:mx-12 my-20 md:my-2">
       <div className="w-full lg:w-4/5 mx-auto mt-4">
         <div className="flex justify-between bg-white p-3 rounded-lg mb-4">
           <Tooltip
@@ -109,14 +109,19 @@ const InquiriesView = () => {
                 <p>
                   {data.name}
                 </p>
-                <p className="flex gap-1 text-sm text-gray-500">
-                  <AiOutlineMail className="self-center" />
-                  {data.email} | <IoLocationOutline className="self-center" />
-                  {data.country}
+                <p className="flex flex-col md:flex-row gap-1 text-sm text-gray-500">
+                  <div className="flex gap-1">
+                    <AiOutlineMail className="self-center" />
+                    {data.email}
+                  </div>
+                  <div className="flex gap-1">
+                    <IoLocationOutline className="self-center" />
+                    {data.country}
+                  </div>
                 </p>
               </div>
             </div>
-            <div className="flex flex-row md:flex-col my-4 md:my-0 gap-4 md:gap-0 ml-16">
+            <div className="flex flex-row md:flex-col my-4 md:my-0 gap-4 md:gap-0 ml-16 text-sm md:text-base  ">
               <p>
                 {formatDate(Date.now())}
               </p>
@@ -127,11 +132,11 @@ const InquiriesView = () => {
           </div>
           <Divider />
           <div>
-            <div className="bg-blue-50 p-6 rounded-xl my-4 w-fit">
+            <div className="bg-blue-50 p-2 md:p-6 rounded-xl my-4 w-fit text-sm md:text-base">
               {data.message}
-              <div className="mt-4">
+              <div className="mt-4 text-sm md:text-base">
                 <div className="flex gap-2">
-                  <p className="font-semibold"> Client Estimated Budget:</p>
+                  <p className="font-semibold">Estimated Budget:</p>
                   <p>
                     {data.budget}
                   </p>
