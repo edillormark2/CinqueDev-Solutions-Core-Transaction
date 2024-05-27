@@ -44,7 +44,7 @@ const ProductView = () => {
 
   const breadcrumbLinks = [
     { to: "/dashboard", label: "Home" },
-    { to: "/product", label: "Product" },
+    { to: "/orders", label: "Orders" },
     { to: "", label: "Summary" }
   ];
 

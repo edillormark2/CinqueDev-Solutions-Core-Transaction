@@ -69,10 +69,6 @@
   z-index: 1000000 !important; /* Adjust other components as needed */
 }
 
-.bg-hero-pattern {
-  background-image: url("./assets/welcome-bg.svg");
-}
-
 .editor-wrapper {
   width: 100%;
   /* @apply shadow-md bg-white rounded-lg; */
@@ -135,9 +131,9 @@ button {
   text-align: justify;
 }
 
-.transaction{
+.transaction {
   background-position: center;
-  background-size:contain;
+  background-size: contain;
   background-repeat: no-repeat;
   background-image: url(./assets/CDS_FULL-LOGO-O.png);
 }

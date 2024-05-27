@@ -42,8 +42,8 @@ export const links = [
         icon: <IoHandLeftOutline />
       },
       {
-        name: "Product",
-        url: "/product",
+        name: "Orders",
+        url: "/orders",
         icon: <MdOutlineShoppingCart />
       },
 

@@ -73,8 +73,8 @@ const App = () => {
                     path="/projects/project-details/:id"
                     element={<ProjectDetails />}
                   />
-                  <Route path="/product" element={<Product />} />
-                  <Route path="/product/detail" element={<ProductDetails />} />
+                  <Route path="/orders" element={<Product />} />
+                  <Route path="/order/detail" element={<ProductDetails />} />
                   <Route path="/ongoing-support" element={<OngoingSupport />} />
                   <Route
                     path="/ongoing-support/subscription-support-details/:id"

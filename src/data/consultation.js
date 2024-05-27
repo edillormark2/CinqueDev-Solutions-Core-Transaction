@@ -2,7 +2,7 @@ import {
   randBetweenDate,
   randFullName,
   randEmail,
-  randPhoneNumber,
+  randPhoneNumber
 } from "@ngneat/falso";
 import dayjs from "dayjs";
 
@@ -100,6 +100,7 @@ export const consultationDummyData = [
     phone: "090-2345-6789",
     message:
       "I'm interested in your software solutions. Can we schedule a meeting?",
+    bookedDateTime: "May 15 2024, 3:00 pm",
     assignees: "Julian Jules Pardi",
     status: "Pending",
     messageStatus: "Read",
@@ -114,6 +115,7 @@ export const consultationDummyData = [
     phone: "080-3456-7890",
     message:
       "I'd like to request a meeting to explore your software solutions further.",
+    bookedDateTime: "May 18 2024, 11:00 am",
     assignees: "Julian Jules Pardi",
     status: "Pending",
     messageStatus: "Unread",
@@ -128,6 +130,7 @@ export const consultationDummyData = [
     phone: "070-4567-8901",
     message:
       "Can we arrange a meeting to discuss the software solutions you provide?",
+    bookedDateTime: "May 19 2024, 2:00 pm",
     assignees: "Mark Angelo Alde",
     status: "In Progress",
     messageStatus: "Unread",
@@ -142,6 +145,7 @@ export const consultationDummyData = [
     phone: "060-5678-9012",
     message:
       "I'm interested in scheduling a consultation to discuss our company's needs.",
+    bookedDateTime: "May 20 2024, 9:30 am",
     assignees: "Julian Jules Pardi",
     status: "Completed",
     messageStatus: "Read",
@@ -156,6 +160,7 @@ export const consultationDummyData = [
     phone: "050-6789-0123",
     message:
       "I'm seeking a consultation to understand how your software can address our company's needs.",
+    bookedDateTime: "May 21 2024, 10:00 am",
     assignees: "Mark Angelo Alde",
     status: "On Hold",
     messageStatus: "Read",
@@ -170,6 +175,7 @@ export const consultationDummyData = [
     phone: "040-7890-1234",
     message:
       "Would it be possible to set up a meeting to review your software offerings?",
+    bookedDateTime: "May 22 2024, 4:00 pm",
     assignees: "Julian Jules Pardi",
     status: "Pending",
     messageStatus: "Read",
@@ -184,6 +190,7 @@ export const consultationDummyData = [
     phone: "030-8901-2345",
     message:
       "I'm keen to discuss potential software solutions for our company. Can we schedule a meeting?",
+    bookedDateTime: "May 23 2024, 1:00 pm",
     assignees: "Mark Angelo Alde",
     status: "In Progress",
     messageStatus: "Unread",
@@ -198,6 +205,7 @@ export const consultationDummyData = [
     phone: "020-9012-3456",
     message:
       "I want to schedule a consultation to explore how your software can support our company's goals.",
+    bookedDateTime: "May 24 2024, 11:30 am",
     assignees: "Julian Jules Pardi",
     status: "Pending",
     messageStatus: "Unread",
@@ -212,6 +220,7 @@ export const consultationDummyData = [
     phone: "010-0123-4567",
     message:
       "I'd like to request a meeting to explore your software solutions further.",
+    bookedDateTime: "May 25 2024, 2:30 pm",
     assignees: "Mark Angelo Alde",
     status: "Pending",
     messageStatus: "Read",
@@ -226,6 +235,7 @@ export const consultationDummyData = [
     phone: "000-1234-5678",
     message:
       "Can we organize a consultation session to assess how your software can benefit our company?",
+    bookedDateTime: "May 26 2024, 9:00 am",
     assignees: "Julian Jules Pardi",
     status: "Completed",
     messageStatus: "Read",
@@ -239,6 +249,7 @@ export const consultationDummyData = [
     email: "isabella.rodriguez@example.com",
     phone: "090-2345-6789",
     message: "Could we arrange a meeting to explore your software solutions?",
+    bookedDateTime: "May 27 2024, 11:00 am",
     assignees: "Julian Jules Pardi",
     status: "Pending",
     messageStatus: "Read",
@@ -253,6 +264,7 @@ export const consultationDummyData = [
     phone: "080-3456-7890",
     message:
       "I'm interested in scheduling a consultation to discuss our company's needs.",
+    bookedDateTime: "May 28 2024, 10:30 am",
     assignees: "Julian Jules Pardi",
     status: "Pending",
     messageStatus: "Unread",
@@ -267,6 +279,7 @@ export const consultationDummyData = [
     phone: "070-4567-8901",
     message:
       "I'm seeking a consultation to understand how your software can address our company's needs.",
+    bookedDateTime: "May 29 2024, 1:30 pm",
     assignees: "Mark Angelo Alde",
     status: "In Progress",
     messageStatus: "Unread",
@@ -281,6 +294,7 @@ export const consultationDummyData = [
     phone: "060-5678-9012",
     message:
       "Can we arrange a meeting to discuss the software solutions you provide?",
+    bookedDateTime: "May 30 2024, 2:00 pm",
     assignees: "Julian Jules Pardi",
     status: "Completed",
     messageStatus: "Read",
@@ -295,6 +309,7 @@ export const consultationDummyData = [
     phone: "050-6789-0123",
     message:
       "I'd like to request a meeting to explore your software solutions further.",
+    bookedDateTime: "May 31 2024, 3:30 pm",
     assignees: "Mark Angelo Alde",
     status: "On Hold",
     messageStatus: "Read",
@@ -309,6 +324,7 @@ export const consultationDummyData = [
     phone: "040-7890-1234",
     message:
       "Can we organize a consultation session to assess how your software can benefit our company?",
+    bookedDateTime: "May 30 2024, 4:30 pm",
     assignees: "Julian Jules Pardi",
     status: "Pending",
     messageStatus: "Read",

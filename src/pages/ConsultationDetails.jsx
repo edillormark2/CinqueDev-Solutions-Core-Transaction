@@ -37,9 +37,13 @@ const ConsultationDetails = () => {
     navigate(-1);
   }
 
+  function handleSchedMeeting() {
+    window.open("https://us05web.zoom.us/meeting/schedule", "_blank");
+  }
+
   return (
-    <div className="mx-4 md:mx-12 my-20 md:my-8">
-      <div className="w-full lg:w-4/5 mx-auto mt-10">
+    <div className="mx-4 md:mx-12 my-20 md:my-2">
+      <div className="w-full lg:w-4/5 mx-auto mt-4">
         <div className="flex justify-between bg-white p-3 rounded-lg mb-4">
           <Tooltip
             title="Go Back"
@@ -69,7 +73,10 @@ const ConsultationDetails = () => {
               placement="bottom"
               TransitionComponent={Fade}
             >
-              <div className="rounded-full p-4 cursor-pointer hover:bg-gray-100">
+              <div
+                onClick={handleSchedMeeting}
+                className="rounded-full p-4 cursor-pointer hover:bg-gray-100"
+              >
                 <IoCallOutline size={20} />
               </div>
             </Tooltip>
@@ -86,7 +93,7 @@ const ConsultationDetails = () => {
         </div>
         {consultation &&
           <div className="bg-white p-4 rounded-lg">
-            <div className="flex justify-between my-4">
+            <div className="flex flex-col md:flex-row justify-between my-4">
               <div className="flex gap-4 ">
                 <div>
                   <img
@@ -104,7 +111,7 @@ const ConsultationDetails = () => {
                   </p>
                 </div>
               </div>
-              <div>
+              <div className="flex flex-row md:flex-col my-4 md:my-0 gap-4 md:gap-0 ml-16">
                 <p>
                   {consultation.date}
                 </p>
@@ -126,6 +133,10 @@ const ConsultationDetails = () => {
             <div>
               <div className="bg-blue-50 p-6 rounded-xl my-4 w-fit">
                 {consultation.message}
+                <div className="mt-4">
+                  <p className="font-semibold"> Booked Time and Date</p>
+                  <p>{consultation.bookedDateTime}</p>
+                </div>
               </div>
               <div className="mt-10">
                 <DraftEditor />

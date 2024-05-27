@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Breadcrumbs from "../components/Breadcrumbs";
 import { softwareSupportData } from "../data/softwaresupport.js";
 import dayjs from "dayjs";
@@ -7,8 +7,10 @@ import { GoGoal } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 import { IoMdSearch } from "react-icons/io";
 import { MdAdd } from "react-icons/md";
+import AddSupportPopup from "../components/AddSupportPopup.jsx";
 
 const OngoingSupport = () => {
+  const [openCreatePopup, setOpenCreatePopup] = useState(false);
   const breadcrumbLinks = [
     { to: "/dashboard", label: "Home" },
     { to: "", label: "Ongoing Support" }
@@ -39,6 +41,10 @@ const OngoingSupport = () => {
     const elapsedDuration = today.diff(start, "day");
 
     return Math.round(elapsedDuration / totalDuration * 100);
+  };
+
+  const handleOpenCreate = () => {
+    setOpenCreatePopup(true);
   };
 
   const colors = [
@@ -72,7 +78,10 @@ const OngoingSupport = () => {
               <IoMdSearch />
             </div>
           </div>
-          <div className="bg-primary text-white p-3 rounded-full cursor-pointer hover:opacity-75 ">
+          <div
+            onClick={handleOpenCreate}
+            className="bg-primary text-white p-3 rounded-full cursor-pointer hover:opacity-75 "
+          >
             <MdAdd className="self-center" size={20} />
           </div>
         </div>
@@ -196,6 +205,10 @@ const OngoingSupport = () => {
           </div>
         </div>
       </div>
+      <AddSupportPopup
+        openCreatePopup={openCreatePopup}
+        setOpenCreatePopup={setOpenCreatePopup}
+      />
     </div>
   );
 };

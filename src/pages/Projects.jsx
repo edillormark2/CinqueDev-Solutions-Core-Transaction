@@ -129,6 +129,7 @@ const Projects = () => {
     },
     {
       field: "action",
+      headerAlign: "center",
       headerName: "Action",
       width: 150,
       flex: 1,

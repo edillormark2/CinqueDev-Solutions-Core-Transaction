@@ -974,3 +974,38 @@ export const mockGeographyData = [
     value: 171135
   }
 ];
+
+export const mockPieData = [
+  {
+    id: "financials",
+    label: "financials",
+    value: 239,
+    color: "hsl(104, 70%, 50%)"
+  },
+  
+  {
+    id: "ecommerce",
+    label: "ecommerce",
+    value: 648,
+    color: "hsl(344, 70%, 50%)"
+  },
+  {
+    id: "logistics",
+    label: "logistics",
+    value: 503,
+    color: "hsl(229, 70%, 50%)"
+  },
+  {
+    id: "elearning",
+    label: "elearning",
+    value: 322,
+    color: "hsl(291, 70%, 50%)"
+  },
+
+  {
+    id: "hr",
+    label: "hr",
+    value: 175,
+    color: "hsl(162, 70%, 50%)"
+  }
+];
