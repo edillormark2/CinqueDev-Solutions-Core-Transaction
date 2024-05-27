@@ -3,7 +3,6 @@ import {
   randFullName,
   randEmail,
   randPhoneNumber,
-  randText
 } from "@ngneat/falso";
 import dayjs from "dayjs";
 

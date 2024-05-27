@@ -11,7 +11,7 @@ import Consultation from "./pages/Consultation";
 import Inquiries from "./pages/Inquiries";
 import InquiriesView from "./pages/InquiriesView";
 import Product from "./pages/Product";
-import ProductView from "./pages/ProductView";
+import ProductDetails from "./pages/ProductDetails";
 import Message from "./pages/Message";
 import Contracts from "./pages/Contracts";
 import ContractForm from "./pages/ContractForm";
@@ -74,7 +74,7 @@ const App = () => {
                     element={<ProjectDetails />}
                   />
                   <Route path="/product" element={<Product />} />
-                  <Route path="/product/detail" element={<ProductView />} />
+                  <Route path="/product/detail" element={<ProductDetails />} />
                   <Route path="/ongoing-support" element={<OngoingSupport />} />
                   <Route
                     path="/ongoing-support/subscription-support-details/:id"
