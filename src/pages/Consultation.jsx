@@ -176,7 +176,7 @@ const Consultation = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-lg py-4 mt-6 overflow-x-auto">
+      <div className="bg-white rounded-lg py-4 mt-6 ">
         <div className="flex justify-between mx-4 mb-4">
           <div className="flex gap-2 self-center">
             <input
@@ -187,11 +187,11 @@ const Consultation = () => {
                   displayedConsultations.length &&
                 displayedConsultations.length > 0
               }
-              className="cursor-pointer h-5 w-5 my-auto border-gray-100"
+              className="cursor-pointer h-5 w-5 my-auto border-gray-100 "
             />
             <div>
               {selectedConsultations.length > 0 &&
-                <div className="flex self-center gap-2 text-gray-500 text-sm hover:text-red-500 cursor-pointer">
+                <div className="flex self-center gap-2 text-gray-500 text-sm hover:text-red-500 cursor-pointer ">
                   <RiDeleteBin6Line size={17} className="self-center" />
                   {selectedConsultations.length ===
                   displayedConsultations.length
@@ -231,12 +231,12 @@ const Consultation = () => {
           </div>
         </div>
         <Divider />
-        <div className="min-w-[900px] p-2 md:p-0">
+        <div className=" p-2 md:p-0 overflow-x-auto">
           {displayedConsultations.map((consultation, index) =>
             <div
               key={index}
               onClick={() => goToConsultationDetails(consultation.id)}
-              className="cursor-pointer hover:bg-blue-50 border md:border-none"
+              className="cursor-pointer hover:bg-blue-50 border md:border-none min-w-[900px]"
             >
               <div className="flex flex-row py-4 px-4">
                 <div className="flex-1 max-w-[300px]">

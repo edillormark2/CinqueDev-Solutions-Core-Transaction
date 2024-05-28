@@ -53,9 +53,8 @@ const SupportDetails = () => {
           </div>
         </div>
         <Breadcrumbs links={breadcrumbLinks} />
-        
 
-        <div className="mt-10 flex flex-col lg:flex-row gap-4">
+        <div className="mt-10 flex flex-col lg:flex-row gap-4 text-sm md:text-base">
           <div className="bg-white rounded-lg p-4 lg:p-8 w-full">
             <div className="bg-blue-50 px-4 py-2 rounded-lg flex justify-between mb-4 gap-4">
               <div className=" text-xl font-semibold self-center ">
@@ -66,7 +65,7 @@ const SupportDetails = () => {
               </div>
             </div>
 
-            <div className="ml-4">
+            <div className="ml-0 md:ml-4">
               <div className="flex gap-2 my-3">
                 <p className="w-1/2 font-semibold">Company name</p>
                 <p className="w-1/2">
@@ -81,9 +80,9 @@ const SupportDetails = () => {
                 </p>
               </div>
               <Divider />
-              <div className="flex gap-2 my-3">
+              <div className="flex gap-0 md:gap-2 my-3">
                 <p className="w-1/2 font-semibold">Email</p>
-                <p className="w-1/2">
+                <p className="w-1/2 self-start overflow-hidden text-ellipsis whitespace-nowrap">
                   {support.email}
                 </p>
               </div>

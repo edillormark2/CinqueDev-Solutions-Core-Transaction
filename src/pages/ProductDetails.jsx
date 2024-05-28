@@ -14,17 +14,17 @@ const CardIcon = ({ cardType }) => {
   let icon;
 
   if (cardType === "Visa") {
-    icon = <img src={visa} width={75}/>
+    icon = <img src={visa} width={75} />;
   } else if (cardType === "MasterCard") {
-    icon = <img src={mastercard} width={75}/>
+    icon = <img src={mastercard} width={75} />;
   } else if (cardType === "American Express") {
-    icon = <img src={amex} width={75}/>
+    icon = <img src={amex} width={75} />;
   } else if (cardType === "Discover") {
-    icon = <img src={discover} width={75}/>
+    icon = <img src={discover} width={75} />;
   } else if (cardType === "JCB") {
-    icon = <img src={jcb} width={75}/>
+    icon = <img src={jcb} width={75} />;
   } else if (cardType === "Maestro") {
-    icon = <img src={maestro} width={75}/>
+    icon = <img src={maestro} width={75} />;
   } else {
     icon = "Unknown Card Type";
   }
@@ -39,7 +39,7 @@ const CardIcon = ({ cardType }) => {
 const ProductView = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const serializedObjectFromURL = queryParams.get('data');
+  const serializedObjectFromURL = queryParams.get("data");
   const data = JSON.parse(decodeURIComponent(serializedObjectFromURL));
 
   const breadcrumbLinks = [
@@ -55,12 +55,10 @@ const ProductView = () => {
       </div>
       <Breadcrumbs links={breadcrumbLinks} />
 
-      <div className="mt-10 flex flex-col lg:flex-row gap-4">
+      <div className="mt-10 flex flex-col lg:flex-row gap-4 text-sm md:text-base">
         <div className="bg-white rounded-lg p-4 lg:p-8 w-full">
           <div className="bg-blue-50 px-4 py-2 rounded-lg flex justify-between mb-4 gap-4">
-            <div className=" text-xl font-semibold self-center ">
-              Overview
-            </div>
+            <div className=" text-xl font-semibold self-center ">Overview</div>
           </div>
 
           <div className="ml-4">
@@ -121,13 +119,12 @@ const ProductView = () => {
               <Divider />
               <div className="flex gap-2 my-3">
                 <p className="w-1/2 font-semibold">Email</p>
-                <p className="w-1/2">
+                <p className="w-1/2 self-start overflow-hidden text-ellipsis whitespace-nowrap">
                   {data.email}
                 </p>
               </div>
-              {
-                data.licenseType === "Company" ?
-                  <div>
+              {data.licenseType === "Company"
+                ? <div>
                     <Divider />
                     <div className="flex gap-2 my-3">
                       <p className="w-1/2 font-semibold">Company</p>
@@ -136,8 +133,7 @@ const ProductView = () => {
                       </p>
                     </div>
                   </div>
-                  : <></>
-              }
+                : <div />}
               <Divider />
               <div className="flex gap-2 my-3">
                 <p className="w-1/2 font-semibold">Country</p>
@@ -150,8 +146,7 @@ const ProductView = () => {
         </div>
 
         <div className="w-full lg:w-1/2">
-          <div cl assName="flex flex-col">
-
+          <div className="flex flex-col">
             <div className="bg-white rounded-lg p-4 w-full">
               <p className="bg-blue-50 px-4 py-2 rounded-lg text-xl font-semibold mt-4 mb-8 ">
                 Payment Details
@@ -177,7 +172,7 @@ const ProductView = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default ProductView;

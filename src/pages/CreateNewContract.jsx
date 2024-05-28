@@ -9,14 +9,14 @@ const CreateNewContract = () => {
   ];
 
   return (
-    <div className="mx-4 lg:mx-12 my-20 md:my-8">
+    <div className="mx-2 lg:mx-12 my-20 md:my-8">
       <div className="flex flex-col md:flex-row justify-between">
         <div className="text-3xl font-semibold my-4">Creat New Contract</div>
       </div>
       <Breadcrumbs links={breadcrumbLinks} />
 
-      <div className="my-8 mx-0 xl:mx-20 2xl:mx-36">
-        <div className="bg-white border p-8">
+      <div className="my-8 mx-0 xl:mx-20 2xl:mx-36 text-sm md:text-base">
+        <div className="bg-white border p-3 md:p-8">
           <p className="text-xl font-bold text-center">
             Fill out the form to create a new contract agreement
           </p>

@@ -26,16 +26,16 @@ const ContractForm = () => {
       </div>
       <Breadcrumbs links={breadcrumbLinks} />
 
-      <div className="my-8 mx-0 xl:mx-20 2xl:mx-36">
-        <div className="bg-white border p-8">
+      <div className="my-8 mx-0 xl:mx-20 2xl:mx-36 text-sm md:text-base">
+        <div className="bg-white border p-2 md:p-8">
           <div className="flex justify-center">
             <img
               src={cdslogo}
               alt="logo"
-              className="w-60 h-60 object-contain"
+              className="w-40 md:w-60 h-40 md:h-60 object-contain"
             />
           </div>
-          <p className="text-3xl font-bold text-center">
+          <p className="text-base md:text-3xl font-bold text-center">
             {contract ? contract.title : "Contract not found"} Agreement
           </p>
           <div className=" mt-10 px-4">
@@ -105,7 +105,7 @@ const ContractForm = () => {
                 {contract ? contract.governingLaw : ""}
               </p>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between text-sm ">
               <div className="mt-20 border-t-2 border-gray-400 w-48 text-center">
                 <p className="my-2">Owner Signature</p>
               </div>
