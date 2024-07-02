@@ -6,7 +6,7 @@
 
 
 <div style="display: flex; align-items: center;">
-    <img src="src/assets/readme/CDS core ss.png" height="500">
+    <img src="src/assets/readme/CDS core ss.png" height="440">
 </div> 
 </div>
 
